@@ -10,7 +10,6 @@ public class gameManager : MonoBehaviour
         float time = 0.0f;
 
         public GameObject endTxt;
-        public Text tryTxt;
         int tryCount = 0;
         public GameObject card;
 
@@ -63,7 +62,6 @@ public class gameManager : MonoBehaviour
         public void isMatched()
         {
                 tryCount++;
-                tryTxt.text = tryCount +"¹ø";
                 string firstCardImage = firstCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
                 string secondCardImage = secondCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
 
