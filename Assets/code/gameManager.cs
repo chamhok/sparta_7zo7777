@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 public class gameManager : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip match;
+
     public Text timeTxt;
     public Text tryTxt;
     float time = 0.0f;
@@ -95,6 +99,8 @@ public class gameManager : MonoBehaviour
 
         if (firstCardImage == secondCardImage)
         {
+            audioSource.PlayOneShot(match);
+
             firstCard.GetComponent<card>().destroyCard();
             secondCard.GetComponent<card>().destroyCard();
 

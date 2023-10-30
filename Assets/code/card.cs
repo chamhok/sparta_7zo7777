@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class card : MonoBehaviour
 {
-         Animator anim;
+    public AudioClip flip;
+    public AudioSource audioSource;
+
+    Animator anim;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -12,20 +15,24 @@ public class card : MonoBehaviour
 
 
     public void openCard()
-        {
-                anim.SetBool("isOpen", true);
+    {
+        audioSource.PlayOneShot(flip);
 
-                if (gameManager.I.firstCard == null)
-                {
-                        gameManager.I.firstCard = gameObject;
-                }
-                else
-                {
-                        gameManager.I.secondCard = gameObject;
-                        gameManager.I.isMatched();
-                }
+        anim.SetBool("isOpen", true);
+        transform.Find("front").gameObject.SetActive(true);
+        transform.Find("back").gameObject.SetActive(false);
+
+        if (gameManager.I.firstCard == null)
+        {
+            gameManager.I.firstCard = gameObject;
         }
-        public void destroyCard()
+        else
+        {
+            gameManager.I.secondCard = gameObject;
+            gameManager.I.isMatched();
+        }
+    }
+    public void destroyCard()
         {
                 Invoke("destroyCardInvoke", 0.5f);
         }
