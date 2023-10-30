@@ -7,6 +7,8 @@ public class card : MonoBehaviour
     public AudioClip flip;
     public AudioSource audioSource;
 
+    bool opencheck = false;
+
     Animator anim;
     void Awake()
     {
@@ -50,5 +52,10 @@ public class card : MonoBehaviour
         void closeCardInvoke()
         {
                anim.SetBool("isOpen", false);
-        }
+            if (!opencheck)
+            {
+                transform.Find("back").GetComponent<SpriteRenderer>().color = new Color(0.7058824f, 0.7058824f, 0.7058824f, 1f);
+                opencheck = true;
+            }
+    }
 }
