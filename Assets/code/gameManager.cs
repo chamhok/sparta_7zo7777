@@ -15,7 +15,7 @@ public class gameManager : MonoBehaviour
     public Text matchTxt;
     float time = 0.0f;
 
-    public GameObject endTxt;
+    public GameObject endPanel;
     int tryCount = 0;
     public GameObject card;
 
@@ -97,7 +97,7 @@ public class gameManager : MonoBehaviour
         {
             isEnd = true;
 
-            endTxt.SetActive(true);
+            endPanel.SetActive(true);
             Time.timeScale = 0.0f;
         }
         else if (time > 2.0f && !isHurry)
@@ -125,7 +125,7 @@ public class gameManager : MonoBehaviour
             setMatchTxt(setTxt(firstCardImage));
             if (cardsLeft == 0)
             {
-                endTxt.SetActive(true);
+                endPanel.SetActive(true);
                 Time.timeScale = 0.0f;
             }
         }
