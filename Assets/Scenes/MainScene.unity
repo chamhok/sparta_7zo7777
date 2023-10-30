@@ -529,8 +529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTxt: {fileID: 845342062}
-  endTxt: {fileID: 308248967}
   tryTxt: {fileID: 2007861533}
+  endTxt: {fileID: 308248967}
   card: {fileID: 7505402098190319036, guid: 06725fa637daaef40b0f59df398b07a9, type: 3}
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
