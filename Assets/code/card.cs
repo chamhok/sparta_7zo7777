@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class card : MonoBehaviour
 {
-        public Animator anim;
+         Animator anim;
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
-        public void openCard()
+
+    public void openCard()
         {
                 anim.SetBool("isOpen", true);
-                transform.Find("front").gameObject.SetActive(true);
-                transform.Find("back").gameObject.SetActive(false);
 
                 if (gameManager.I.firstCard == null)
                 {
@@ -39,8 +42,6 @@ public class card : MonoBehaviour
 
         void closeCardInvoke()
         {
-                anim.SetBool("isOpen", false);
-                transform.Find("back").gameObject.SetActive(true);
-                transform.Find("front").gameObject.SetActive(false);
+               anim.SetBool("isOpen", false);
         }
 }
