@@ -14,7 +14,7 @@ public class gameManager : MonoBehaviour
     public Text tryTxt;
     float time = 0.0f;
 
-    public GameObject endTxt;
+    public GameObject endPanel;
     int tryCount = 0;
     public GameObject card;
 
@@ -78,7 +78,7 @@ public class gameManager : MonoBehaviour
         {
             isEnd = true;
 
-            endTxt.SetActive(true);
+            endPanel.SetActive(true);
             Time.timeScale = 0.0f;
         }
         else if (time > 2.0f && !isHurry)
@@ -107,7 +107,7 @@ public class gameManager : MonoBehaviour
             int cardsLeft = GameObject.Find("cards").transform.childCount;
             if (cardsLeft == 2)
             {
-                endTxt.SetActive(true);
+                endPanel.SetActive(true);
                 Time.timeScale = 0.0f;
             }
         }
