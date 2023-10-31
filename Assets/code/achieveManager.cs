@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +28,7 @@ public class achieveManager : MonoBehaviour
         foreach(Achive achive in achives)
         {
             PlayerPrefs.SetInt(achive.ToString(), 0);
-            //Ω«¡¶ Ω««‡µ«¥¬¡ˆ Ω««Ë«ÿ∫º∂ß¥¬ 0 => 1∑Œ πŸ≤€µ⁄ editø° Clear All PlayerPref ≈¨∏Ø »ƒ Ω««‡
+            //Ïã§Ï†ú Ïã§ÌñâÎêòÎäîÏßÄ Ïã§ÌóòÌï¥Î≥ºÎïåÎäî 0 => 1Î°ú Î∞îÍæºÎí§ editÏóê Clear All PlayerPref ÌÅ¥Î¶≠ ÌõÑ Ïã§Ìñâ
         }
     }
     void Start()
@@ -42,7 +42,7 @@ public class achieveManager : MonoBehaviour
         {
             string achiveName = achives[index].ToString();
             bool isUnlock = PlayerPrefs.GetInt(achiveName, 0) == 1;
-            //«ÿ±› ¡∂∞«¿Ã ¥ﬁº∫µ«∏È isUnlock = 1 :true
+            //Ìï¥Í∏à Ï°∞Í±¥Ïù¥ Îã¨ÏÑ±ÎêòÎ©¥ isUnlock = 1 :true
             lockCharacter[index].SetActive(!isUnlock);
             unlockCharacter[index].SetActive(isUnlock);
 
@@ -52,5 +52,28 @@ public class achieveManager : MonoBehaviour
     void Update()
     {
         
+    }
+    private void LateUpdate()
+    {
+        foreach(Achive achieve in achives)
+        {
+            CheckAchive(achieve);
+        }
+
+    }
+    void CheckAchive(Achive achive)
+    {
+        bool isAchive = false;
+
+        switch(achive)
+        {
+            case Achive.UnlockMan:
+                isAchive = gameManager.
+                break;
+
+            case Achive.UnlockWoman: 
+                break;
+
+        }
     }
 }

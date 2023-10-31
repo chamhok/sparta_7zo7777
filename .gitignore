@@ -76,3 +76,6 @@ crashlytics-build.properties
 ProjectSettings/BurstAotSettings_Android.json
 ProjectSettings/BurstAotSettings_StandaloneWindows.json
 ProjectSettings/CommonBurstAotSettings.json
+
+[*]
+charset = utf-8
