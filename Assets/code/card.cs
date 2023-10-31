@@ -19,6 +19,7 @@ public class card : MonoBehaviour
     public void openCard()
     {
         audioSource.PlayOneShot(flip);
+        //뒤집을때 나는 소리
 
         anim.SetBool("isOpen", true);
         transform.Find("front").gameObject.SetActive(true);
