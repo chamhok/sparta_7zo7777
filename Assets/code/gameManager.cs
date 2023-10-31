@@ -108,11 +108,17 @@ public class gameManager : MonoBehaviour
 
         }
     }
+    
 
-    public void isMatched()
+    // 카드의 뒤집는 횟수를 센다.
+    private void tryCounting()
     {
         tryCount++;
         tryTxt.text = tryCount + "번";
+     }
+    public void isMatched()
+    {
+        tryCounting();
         string firstCardImage = firstCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
         string secondCardImage = secondCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
 
