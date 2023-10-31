@@ -9,6 +9,7 @@ class MyImage
 {
     string name;
     string resourceName;
+    bool isCat = false;
 
     public void SetName(string name)
     {
@@ -25,6 +26,10 @@ class MyImage
     public string GetResourceName()
     {
         return this.resourceName;
+    }
+    public bool GetIsCat()
+    {
+        return this.isCat;
     }
 }
 
@@ -131,8 +136,6 @@ public class gameManager : MonoBehaviour
     {
         if (isEnd) return;
 
-
-
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
@@ -150,7 +153,6 @@ public class gameManager : MonoBehaviour
         }
         else if (time > 2.0f && !isHurry)
         {
-
             isHurry = true;
             timeTxtAnim.SetTrigger("isHurryUp");
 
@@ -205,16 +207,16 @@ public class gameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
     }
-        //고양이의 위치를 바꾼다.
-        private void cathide()
-        {
-                if (firstCard.transform.name == "군침냥") // 퍼스트 카드의 이름이 군침냥(추후수정)인지 확인 
-                {
-                        Vector3 tempPosition = firstCard.transform.position; 
-                        firstCard.transform.position = cards.transform.GetChild(1).position;
-                        cards.transform.GetChild(1).position = tempPosition;
-                }
-        }
+    //고양이의 위치를 바꾼다.
+    private void cathide()
+    {
+            if (firstCard.transform.name == "군침냥") // 퍼스트 카드의 이름이 군침냥(추후수정)인지 확인 
+            {
+                    Vector3 tempPosition = firstCard.transform.position; 
+                    firstCard.transform.position = cards.transform.GetChild(1).position;
+                    cards.transform.GetChild(1).position = tempPosition;
+            }
+    }
 
     string setTxt(string name)
     {
@@ -320,6 +322,7 @@ public class gameManager : MonoBehaviour
 		images[19] = new MyImage();
 		images[19].SetName("고양이");
 		images[19].SetResourceName("team19");
+        Debug.Log(images[19].GetIsCat());
 	}
     void setEndPanel()
     {
