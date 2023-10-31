@@ -798,6 +798,7 @@ MonoBehaviour:
   cards: {fileID: 69645849}
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
+  limittime: 30
 --- !u!4 &548532084
 Transform:
   m_ObjectHideFlags: 0

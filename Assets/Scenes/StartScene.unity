@@ -998,7 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1366084073}
-  startBgm: {fileID: 8300000, guid: 11ae6dec41484c54a9f24a2d6127ff4d, type: 3}
+  startBgm: {fileID: 8300000, guid: 86359f3b5baf6264eb9a79e93f762745, type: 3}
 --- !u!82 &1366084073
 AudioSource:
   m_ObjectHideFlags: 0
