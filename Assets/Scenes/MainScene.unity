@@ -782,6 +782,7 @@ MonoBehaviour:
   bgmusic: {fileID: 8300000, guid: e23172bf84d26c247973ee1bbb435271, type: 3}
   defeat: {fileID: 8300000, guid: 8418c7c0cea770343a596611bc8f6cb2, type: 3}
   success: {fileID: 8300000, guid: 5db42d2a5292a3244beb834cae074a5e, type: 3}
+  wrong: {fileID: 8300000, guid: da116ff1d77339847bef3944d2a3be40, type: 3}
   timeTxt: {fileID: 845342062}
   tryTxt: {fileID: 2007861533}
   matchTxt: {fileID: 1305168626}

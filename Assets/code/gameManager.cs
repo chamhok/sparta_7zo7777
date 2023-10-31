@@ -35,6 +35,7 @@ public class gameManager : MonoBehaviour
     public AudioClip bgmusic;
     public AudioClip defeat;
     public AudioClip success;
+    public AudioClip wrong;
 
     public Text timeTxt;
     public Text tryTxt;
@@ -182,6 +183,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
+            audioSource.PlayOneShot(wrong);
             setMatchTxt("꽝!!!");
             firstCard.GetComponent<card>().closeCard();
             secondCard.GetComponent<card>().closeCard();
