@@ -8,8 +8,6 @@ public class endTxt : MonoBehaviour
         public void retryGame()
         {
                 SceneManager.LoadScene("MainScene");
-                Time.timeScale = 1.0f;
         }
-
    
 }

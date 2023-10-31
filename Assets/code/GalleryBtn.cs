@@ -1,57 +1,70 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
+public class GalleryBtn : MonoBehaviour
 {
+    public GalleryManager.WhoIs whoIs;
 
-	public enum WhoIs // 갤러리 팝업 enum과 목록 똑같아야한다
-	{
-		전은하,
-		황선범,
-		강건욱,
-		정용태,
-		박기혁,
-		냥이
-	}
-
-	public WhoIs whoIs;
-
-    Animator anim;
     AudioSource audioSource;
     GalleryManager galleryManager;
 
+    public GameObject blindObj;
+
+    Button btn;
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
+        btn = GetComponent<Button>();
         audioSource = GetComponent<AudioSource>();
+
         galleryManager = FindObjectOfType<GalleryManager>();
     }
 
 
-    private void OnEnable()
+    private void OnEnable() // 임시로 랜덤 획득중
     {
-        anim.SetBool("isGet", false); // 플레이어프리프에 카드 획득여부 넣기
-
-		anim.SetTrigger("go");
+        int a = Random.Range(0, 2);
+        blindObj.SetActive((a == 0));
+        btn.interactable = !(a == 0);
+        // 이 버튼이 누구 버튼인지(int)whoIs, 그 사람의 카드를 획득했는지 플레이어프리프 이용해서 false에 넣기
     }
 
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-		// if (audioSource != null)
-		//  audioSource.Play();  // 엔터사운드로 교체
-	}
-
-	public void Click()
+    public void Click()
     {
         if (audioSource != null)
             audioSource.Play();
 
-        galleryManager.PopupOpen(whoIs);
+        galleryManager.PopupOpen((int)whoIs);
+    }
+}
 
+
+/*
+ 
+
+/*
+     void UnlockCharacter()
+    {
+        for (int index = 0; index < lockCharacter.Length; index++)
+        {
+            string achiveName = achives[index].ToString();
+            bool isUnlock = PlayerPrefs.GetInt(achiveName, 0) == 1;
+            // isUnlock = 1 :true
+            lockCharacter[index].SetActive(!isUnlock);
+            unlockCharacter[index].SetActive(isUnlock);
+
+        }
     }
 
 
-}
+
+   void Init()
+    {
+        PlayerPrefs.SetInt("MyData", 1);
+
+        foreach (Achive achive in achives)
+        {
+            PlayerPrefs.SetInt(achive.ToString(), 1);
+            /* 잠금해제하고 싶은 경우 윗줄에서 0을 1로 바꾼 뒤 
+             * edit에서 Clear all PlayerPref를 눌러 초기화한 후 게임을 실행하면 잠금해제 
+             */

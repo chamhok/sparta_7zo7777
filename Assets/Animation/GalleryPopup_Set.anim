@@ -65,7 +65,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\uCE78"
+    path: "\uB4B7\uBC30\uACBD\uD074\uB9AD\uBC29\uC9C0"
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -93,7 +93,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: "\uCE78"
+    path: "\uB4B7\uBC30\uACBD\uD074\uB9AD\uBC29\uC9C0"
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -106,7 +106,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2936331929
+      path: 3617068985
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -115,7 +115,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2936331929
+      path: 3617068985
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -270,7 +270,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: "\uCE78"
+    path: "\uB4B7\uBC30\uACBD\uD074\uB9AD\uBC29\uC9C0"
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -300,7 +300,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: "\uCE78"
+    path: "\uB4B7\uBC30\uACBD\uD074\uB9AD\uBC29\uC9C0"
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -330,7 +330,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: "\uCE78"
+    path: "\uB4B7\uBC30\uACBD\uD074\uB9AD\uBC29\uC9C0"
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -360,7 +360,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: "\uCE78"
+    path: "\uB4B7\uBC30\uACBD\uD074\uB9AD\uBC29\uC9C0"
     classID: 224
     script: {fileID: 0}
     flags: 0
