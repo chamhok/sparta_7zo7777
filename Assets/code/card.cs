@@ -19,7 +19,7 @@ public class card : MonoBehaviour
     public void openCard()
     {
         audioSource.PlayOneShot(flip);
-        //µÚÁýÀ»¶§ ³ª´Â ¼Ò¸®
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½
 
         anim.SetBool("isOpen", true);
         transform.Find("front").gameObject.SetActive(true);
