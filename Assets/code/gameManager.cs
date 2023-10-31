@@ -245,26 +245,20 @@ public class gameManager : MonoBehaviour
 
     void separteCats()
     {
-        // 오류 있음. 이 함수는 다시 만들어야됩니다 ㅠㅠ
+		int tempLimit = images.Length - 1 - catList.Count;
 		int count = images.Length - 1;
-		for (int i=0; i < catList.Count; i++)
-        {
-            while(true)
+
+		for (int i = 0; i < tempLimit; i++)
+		{
+            while (images[count].GetIsCat()) count--;
+            if (images[i].GetIsCat())
             {
-                if (images[count].GetIsCat())
-                {
-                    count--;
-                }
-                else
-                {
-                    MyImage temp;
-                    temp = images[catList[i]];
-					images[catList[i]] = images[count];
-                    images[count] = temp;
-                    break;
-                }
+                MyImage temp;
+                temp = images[i];
+                images[i] = images[count];
+                images[count] = temp;
             }
-        }
+		}
 	}
 
     // class의 배열을 랜덤하게 섞는 함수(인터넷에서 봄)
