@@ -34,7 +34,7 @@ public class GalleryManager : MonoBehaviour
             profile.Add(i, new ProfileSetting(((WhoIs)(i)).ToString(), faces[i], tmis[i]));
         }
     }
-
+    
     public void PopupOpen(int num)
     {
         nameTxt.text = profile[num].name;
