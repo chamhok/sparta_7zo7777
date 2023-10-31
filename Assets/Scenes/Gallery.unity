@@ -211,6 +211,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3865098415850693098, guid: 358344c0db5f2304496772a7f8295816, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 282.3106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865098415850693098, guid: 358344c0db5f2304496772a7f8295816, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 282.3106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865098415850693098, guid: 358344c0db5f2304496772a7f8295816, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -131
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865098415850693098, guid: 358344c0db5f2304496772a7f8295816, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574956016244779845, guid: 358344c0db5f2304496772a7f8295816, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebeaac7f0f6a2d04c8cbfddd1398cbb3, type: 3}
     - target: {fileID: 7279713558872322437, guid: 358344c0db5f2304496772a7f8295816, type: 3}
       propertyPath: m_Name
       value: GalleryPopup
@@ -474,6 +494,26 @@ PrefabInstance:
     - target: {fileID: 2247974626282840032, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472761990063583832, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472761990063583832, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebeaac7f0f6a2d04c8cbfddd1398cbb3, type: 3}
+    - target: {fileID: 3472761990063583832, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472761990063583832, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472761990063583832, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

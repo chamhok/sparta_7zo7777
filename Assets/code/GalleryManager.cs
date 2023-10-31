@@ -20,6 +20,15 @@ public class GalleryManager : MonoBehaviour
     GalleryPopup[] galleryPopups; // 팝업창 애니메이터들
 
 
+    /*
+      
+     * CG 종류만큼 갤러리 버튼 프리팹과 팝업창 프리팹을 컨트롤D로 늘리고 팝업창 내용을 수정해준다.
+     * 
+     * 팝업창과 버튼 ENUM에도 CG 이름 추가해야함. 나중에 CG 해금여부 읽을때도 필요
+    
+     
+     */
+
 
     void Awake()
     {

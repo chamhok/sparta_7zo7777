@@ -17,11 +17,6 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
 
     public WhoIs whoIs;
 
-
-
-    public Sprite backSprite; // cg 해금안됐을때 뜨는 뒷면 이미지
-
-    Image img;
     Animator anim;
     AudioSource audioSource;
     GalleryManager galleryManager;
@@ -29,7 +24,6 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
 
     void Awake()
     {
-        img = GetComponent<Image>();
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         galleryManager = FindObjectOfType<GalleryManager>();
@@ -38,24 +32,15 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
 
     private void OnEnable()
     {
-      
-
-        if (false)   // 플레이어프리프에 카드 획득여부 넣기
-        {
-            img.sprite = backSprite;
-        }
-
         anim.SetBool("isGet", false); // 플레이어프리프에 카드 획득여부 넣기
         anim.SetTrigger("go");
-
     }
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (audioSource != null) { }
-        // audioSource.Play(); 엔터사운드로 교체
-
+       // if (audioSource != null)
+         //  audioSource.Play();  // 엔터사운드로 교체
     }
 
     public void Click()
@@ -63,10 +48,9 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
         if (audioSource != null)
             audioSource.Play();
 
-
         galleryManager.PopupOpen(whoIs);
 
-        Debug.Log(whoIs + "번 cg열립니다");
+        Debug.Log(whoIs + " cg열립니다");
 
     }
 
