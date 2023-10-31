@@ -55,6 +55,9 @@ public class gameManager : MonoBehaviour
         audioSource.clip = bgmusic;
         audioSource.Play();//bgm 재생
 
+        // Images Array 랜덤하게 섞기. 0번부터 요구하는 카드 갯수의 절반만 사용함.
+        ShuffleArray(images);
+
         for (int i=0; i < cardStocks; i++)
         {
                 check[i] = false;
@@ -185,5 +188,23 @@ public class gameManager : MonoBehaviour
     void clearMatchTxt()
     {
         matchTxt.text ="";
+    }
+
+    string[] ShuffleArray(string[] list)
+    {
+        int random1,  random2;
+        string temp;
+
+        for (int i = 0; i < list.Length; ++i)
+        {
+            random1 = Random.Range(0, list.Length);
+            random2 = Random.Range(0, list.Length);
+
+            temp = list[random1];
+            list[random1] = list[random2];
+            list[random2] = temp;
+        }
+
+        return list;
     }
 }
