@@ -48,6 +48,7 @@ public class gameManager : MonoBehaviour
     public GameObject endPanel;
     int tryCount = 0;
     public GameObject card;
+    public GameObject cards;
 
     public static gameManager I;
 
@@ -111,6 +112,7 @@ public class gameManager : MonoBehaviour
                     float y = (rand % 4) * 1.4f - 3.0f;
                     newCard.transform.position = new Vector3(x, y, 0);
                     newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i].GetResourceName());
+                    newCard.transform.name = images[i].GetName(); // 카드에게 각각 이름을 부여
                     doubleCheck++;
                 }
                 if(doubleCheck >= 2)
@@ -121,6 +123,7 @@ public class gameManager : MonoBehaviour
             }
                 
         }
+
     }
 
     // Update is called once per frame
@@ -189,18 +192,29 @@ public class gameManager : MonoBehaviour
             }
         }
         else
-        {
-            audioSource.PlayOneShot(wrong);
-            setMatchTxt("꽝!!!");
-            firstCard.GetComponent<card>().closeCard();
-            secondCard.GetComponent<card>().closeCard();
-        }
-        if(IsInvoking("clearMatchTxt")) CancelInvoke("clearMatchTxt");
+                {
+                        cathide();
+                        audioSource.PlayOneShot(wrong);
+                        setMatchTxt("꽝!!!");
+                        firstCard.GetComponent<card>().closeCard();
+                        secondCard.GetComponent<card>().closeCard();
+                }
+                if (IsInvoking("clearMatchTxt")) CancelInvoke("clearMatchTxt");
         Invoke("clearMatchTxt", 0.5f);
 
         firstCard = null;
         secondCard = null;
     }
+        //고양이의 위치를 바꾼다.
+        private void cathide()
+        {
+                if (firstCard.transform.name == "군침냥") // 퍼스트 카드의 이름이 군침냥(추후수정)인지 확인 
+                {
+                        Vector3 tempPosition = firstCard.transform.position; 
+                        firstCard.transform.position = cards.transform.GetChild(1).position;
+                        cards.transform.GetChild(1).position = tempPosition;
+                }
+        }
 
     string setTxt(string name)
     {
