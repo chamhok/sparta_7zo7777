@@ -13,6 +13,7 @@ public class GoHome : MonoBehaviour
     public void goHome()
     {
         audioSource.PlayOneShot(click);
+        Destroy(GameObject.Find("difficultysend"));
         SceneManager.LoadScene("StartScene");
         Time.timeScale = 1.0f;
      }
