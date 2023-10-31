@@ -347,6 +347,7 @@ public class gameManager : MonoBehaviour
 		images[19] = new MyImage();
 		images[19].SetName("고양이");
 		images[19].SetResourceName("team19");
+        images[19].SetIsCat(true);
 	}
     void gameEnd(bool success)
     {
