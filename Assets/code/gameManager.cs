@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System.Text.RegularExpressions;
+using UnityEngine.SocialPlatforms.Impl;
 
 class MyImage
 {
@@ -48,7 +49,6 @@ public class gameManager : MonoBehaviour
     public Text timeTxt;
     public Text tryTxt;
     public Text matchTxt;
-    float time = 0.0f;
 
     public GameObject endPanel;
     int tryCount = 0;
@@ -60,7 +60,8 @@ public class gameManager : MonoBehaviour
     public GameObject firstCard;
     public GameObject secondCard;
 
-    public float limittime = 5.0f;
+    public float limitTime = 30.0f;
+    float currentTime = 0.0f;
 
 
     // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
@@ -85,6 +86,7 @@ public class gameManager : MonoBehaviour
     void Start()
     {
         clearMatchTxt();
+        currentTime = limitTime;
         isEnd = false;
         isHurry = false;
         cardStocks = 4*4;
@@ -138,29 +140,24 @@ public class gameManager : MonoBehaviour
     {
         if (isEnd) return;
 
-        time += Time.deltaTime;
-        timeTxt.text = time.ToString("N2");
+        currentTime -= Time.deltaTime;
+        timeTxt.text = currentTime.ToString("N2");
 
         //제한시간이 지나면 게임 종료
-        if (time > limittime)
+        if (currentTime <= 0)
         {
             isEnd = true;
-
-            endPanel.SetActive(true);
-
-            Time.timeScale = 0.0f;
-                setEndPanel();
+            gameEnd(false);
             audioSource.clip = bgmusic;
             audioSource.Pause();
             audioSource.clip = defeat;
             audioSource.Play();
             //30초 지나면 실패 음악으로 변경
         }
-        else if (time > 2.0f && !isHurry)
+        else if (currentTime < 10.0f && !isHurry)
         {
             isHurry = true;
             timeTxtAnim.SetTrigger("isHurryUp");
-
         }
     }
     
@@ -187,9 +184,7 @@ public class gameManager : MonoBehaviour
             if (cardsLeft == 0)
             {
                 // 게임종료, endpanel 활성화 + 점수 계산
-                endPanel.SetActive(true);
-                Time.timeScale = 0.0f;
-                setEndPanel();
+                gameEnd(true);
                 
                 audioSource.clip = bgmusic;
                 audioSource.Pause();
@@ -329,29 +324,34 @@ public class gameManager : MonoBehaviour
 		images[19].SetResourceName("team19");
         Debug.Log(images[19].GetIsCat());
 	}
-    void setEndPanel()
+    void gameEnd(bool success)
     {
-        // 최단속도 설정
-        if(PlayerPrefs.HasKey("fastest"))
+		endPanel.SetActive(true);
+		Time.timeScale = 0.0f;
+        // 몇 초 안에 깼는지 + 점수
+        float clearTime = limitTime - currentTime;
+        float timeScore = currentTime;
+		if (PlayerPrefs.HasKey("fastest"))
         {
-            if(PlayerPrefs.GetFloat("fastest") >= time)
+            if(PlayerPrefs.GetFloat("fastest") >= clearTime)
             {
-                PlayerPrefs.GetFloat("fastest", time);
-                fastestTxt.text = time.ToString("N2");
+                PlayerPrefs.GetFloat("fastest", clearTime);
+                fastestTxt.text = clearTime.ToString("N2");
             }
             else
             {
                 fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
             }
         }
-        else
+        else if(success)
         {
-            PlayerPrefs.GetFloat("fastest", time);
-            fastestTxt.text = time.ToString("N2");
+            PlayerPrefs.GetFloat("fastest", clearTime);
+            fastestTxt.text = clearTime.ToString("N2");
         }
         // 이번 판 점수 설정
-        float currentScore = 50f + (30f-time) - (float) tryCount/2; 
-        currentScoreTxt.text = currentScore.ToString("N2");
+        float currentScore = 0f;
+        if(success) currentScore = 50f + timeScore - (float)tryCount / 2;
+		currentScoreTxt.text = currentScore.ToString("N2");
 
         // 최고점 설정 <- 최단속도랑 똑같은데 key만 다름
         if(PlayerPrefs.HasKey("maxScore"))
@@ -368,7 +368,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.GetFloat("maxScore", time);
+            PlayerPrefs.GetFloat("maxScore", currentScore);
             highScoreTxt.text = currentScore.ToString("N2");
         }
 
