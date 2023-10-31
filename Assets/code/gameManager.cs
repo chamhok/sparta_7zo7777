@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip match;
+    public AudioClip bgmusic;
 
     public Text timeTxt;
     public Text tryTxt;
@@ -51,7 +52,10 @@ public class gameManager : MonoBehaviour
 
         Time.timeScale = 1.0f;
 
-        for(int i=0; i < cardStocks; i++)
+        audioSource.clip = bgmusic;
+        audioSource.Play();//bgm 재생
+
+        for (int i=0; i < cardStocks; i++)
         {
                 check[i] = false;
         }
@@ -99,6 +103,9 @@ public class gameManager : MonoBehaviour
 
             endPanel.SetActive(true);
             Time.timeScale = 0.0f;
+
+            audioSource.Pause();
+            //30초 지나면 음악 중지
         }
         else if (time > 2.0f && !isHurry)
         {
@@ -133,6 +140,9 @@ public class gameManager : MonoBehaviour
             {
                 endPanel.SetActive(true);
                 Time.timeScale = 0.0f;
+                
+                audioSource.Pause();
+                //카드 매칭이 끝나면 음악중지
             }
         }
         else
