@@ -923,6 +923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 548532085}
   match: {fileID: 8300000, guid: 6786ebfd33b42dd43ba3a119b97705f7, type: 3}
+  bgmusic: {fileID: 8300000, guid: e23172bf84d26c247973ee1bbb435271, type: 3}
   timeTxt: {fileID: 845342062}
   tryTxt: {fileID: 2007861533}
   matchTxt: {fileID: 1305168626}
