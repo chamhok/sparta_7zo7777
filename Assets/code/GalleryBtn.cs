@@ -51,8 +51,6 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
 
         galleryManager.PopupOpen(whoIs);
 
-        Debug.Log(whoIs + " cg�����ϴ�");
-
     }
 
 
