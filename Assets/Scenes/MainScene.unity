@@ -786,7 +786,7 @@ MonoBehaviour:
   bgmusic: {fileID: 8300000, guid: e23172bf84d26c247973ee1bbb435271, type: 3}
   defeat: {fileID: 8300000, guid: 8418c7c0cea770343a596611bc8f6cb2, type: 3}
   success: {fileID: 8300000, guid: 5db42d2a5292a3244beb834cae074a5e, type: 3}
-  wrong: {fileID: 8300000, guid: da116ff1d77339847bef3944d2a3be40, type: 3}
+  wrong: {fileID: 8300000, guid: 0c9010c3d42674f4093b70a00a91a33f, type: 3}
   fastestTxt: {fileID: 264263929}
   currentScoreTxt: {fileID: 997760146}
   highScoreTxt: {fileID: 1030139322}
