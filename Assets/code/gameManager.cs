@@ -78,6 +78,7 @@ public class gameManager : MonoBehaviour
     int cardStocks = 0;
     int cardsLeft = 0;
 	List<int> catList = new List<int>();
+    string catName;
 
 	bool isEnd = false;
     bool isHurry = false;
@@ -121,6 +122,8 @@ public class gameManager : MonoBehaviour
         {
             generateCard(i);
         }
+
+
 
     }
 
@@ -209,12 +212,13 @@ public class gameManager : MonoBehaviour
     //고양이의 위치를 바꾼다.
     private void cathide()
     {
-            if (firstCard.transform.name == "군침냥") // 퍼스트 카드의 이름이 군침냥(추후수정)인지 확인 
-            {
-                    Vector3 tempPosition = firstCard.transform.position; 
-                    firstCard.transform.position = cards.transform.GetChild(1).position;
-                    cards.transform.GetChild(1).position = tempPosition;
-            }
+        if (catName == firstCard.transform.name)
+		{
+            int rand = Random.Range(0,cards.transform.childCount-1);
+			Vector3 tempPosition = firstCard.transform.position;
+			firstCard.transform.position = cards.transform.GetChild(rand).position;
+			cards.transform.GetChild(rand).position = tempPosition;
+		}
     }
 
     string setTxt(string name)
@@ -241,9 +245,10 @@ public class gameManager : MonoBehaviour
 
     void separteCats()
     {
-        for(int i=0; i < catList.Count; i++)
+        // 오류 있음. 이 함수는 다시 만들어야됩니다 ㅠㅠ
+		int count = images.Length - 1;
+		for (int i=0; i < catList.Count; i++)
         {
-            int count = images.Length - 1;
             while(true)
             {
                 if (images[count].GetIsCat())
@@ -254,13 +259,13 @@ public class gameManager : MonoBehaviour
                 {
                     MyImage temp;
                     temp = images[catList[i]];
-                    images[catList[i]] = images[count];
+					images[catList[i]] = images[count];
                     images[count] = temp;
                     break;
                 }
             }
         }
-    }
+	}
 
     // class의 배열을 랜덤하게 섞는 함수(인터넷에서 봄)
     MyImage[] shuffleImages(MyImage[] list)
@@ -268,7 +273,7 @@ public class gameManager : MonoBehaviour
         int random1,  random2;
         MyImage temp;
 
-        for (int i = 0; i < list.Length; ++i)
+        for (int i = 0; i < list.Length - catList.Count; ++i)
         {
             random1 = Random.Range(0, list.Length - catList.Count);
             random2 = Random.Range(0, list.Length - catList.Count);
@@ -406,7 +411,9 @@ public class gameManager : MonoBehaviour
 		{
 			if (images[i].GetIsCat()) catList.Add(i);
 		}
-        return catList[Random.Range(0, catList.Count)];
+        int temp = Random.Range(0, catList.Count);
+        catName = images[catList[temp]].GetName();
+		return catList[temp];
 	}
 
     void generateCard(int i)
