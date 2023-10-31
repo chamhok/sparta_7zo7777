@@ -5,17 +5,17 @@ using UnityEngine;
 public class GalleryPopup : MonoBehaviour
 {
 
-    public enum WhoIs // °¶·¯¸® ¹öÆ° enum°ú ¸ñ·Ï ¶È°°¾Æ¾ßÇÑ´Ù
-    {
-        ÀüÀºÇÏ,
-        È²¼±¹ü,
-        °­°Ç¿í,
-        Á¤¿ëÅÂ,
-        ¹Ú±âÇõ,
-        ³ÉÀÌ
-    }
+	public enum WhoIs // ê°¤ëŸ¬ë¦¬ ë²„íŠ¼ enumê³¼ ëª©ë¡ ë˜‘ê°™ì•„ì•¼í•œë‹¤
+	{
+		ì „ì€í•˜,
+		í™©ì„ ë²”,
+		ê°•ê±´ìš±,
+		ì •ìš©íƒœ,
+		ë°•ê¸°í˜,
+		ëƒ¥ì´
+	}
 
-    public WhoIs whoIs;
+	public WhoIs whoIs;
 
 
     [HideInInspector] public Animator anim;

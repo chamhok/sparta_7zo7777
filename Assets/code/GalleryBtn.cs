@@ -5,17 +5,17 @@ using UnityEngine.UI;
 public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
 {
 
-    public enum WhoIs // °¶·¯¸® ÆË¾÷ enum°ú ¸ñ·Ï ¶È°°¾Æ¾ßÇÑ´Ù
-    {
-        ÀüÀºÇÏ,
-        È²¼±¹ü,
-        °­°Ç¿í,
-        Á¤¿ëÅÂ,
-        ¹Ú±âÇõ,
-        ³ÉÀÌ
-    }
+	public enum WhoIs // ê°¤ëŸ¬ë¦¬ íŒì—… enumê³¼ ëª©ë¡ ë˜‘ê°™ì•„ì•¼í•œë‹¤
+	{
+		ì „ì€í•˜,
+		í™©ì„ ë²”,
+		ê°•ê±´ìš±,
+		ì •ìš©íƒœ,
+		ë°•ê¸°í˜,
+		ëƒ¥ì´
+	}
 
-    public WhoIs whoIs;
+	public WhoIs whoIs;
 
     Animator anim;
     AudioSource audioSource;
@@ -32,25 +32,26 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
 
     private void OnEnable()
     {
-        anim.SetBool("isGet", false); // ÇÃ·¹ÀÌ¾îÇÁ¸®ÇÁ¿¡ Ä«µå È¹µæ¿©ºÎ ³Ö±â
-        anim.SetTrigger("go");
+        anim.SetBool("isGet", false); // í”Œë ˆì´ì–´í”„ë¦¬í”„ì— ì¹´ë“œ íšë“ì—¬ë¶€ ë„£ê¸°
+
+		anim.SetTrigger("go");
     }
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-       // if (audioSource != null)
-         //  audioSource.Play();  // ¿£ÅÍ»ç¿îµå·Î ±³Ã¼
-    }
+		// if (audioSource != null)
+		//  audioSource.Play();  // ì—”í„°ì‚¬ìš´ë“œë¡œ êµì²´
+	}
 
-    public void Click()
+	public void Click()
     {
         if (audioSource != null)
             audioSource.Play();
 
         galleryManager.PopupOpen(whoIs);
 
-        Debug.Log(whoIs + " cg¿­¸³´Ï´Ù");
+        Debug.Log(whoIs + " cgï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 
     }
 

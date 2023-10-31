@@ -11,12 +11,12 @@ public class gotoGallery : MonoBehaviour
     public void GoGallery()
     {
         audioSource.PlayOneShot(click);
-        //Å¬¸¯ »ç¿îµå
-        SceneManager.LoadScene("Gallery");
-        //°¶·¯¸®·Î ÀÌµ¿
+		//í´ë¦­ ì‚¬ìš´ë“œ
+		SceneManager.LoadScene("Gallery");
+		//ê°¤ëŸ¬ë¦¬ë¡œ ì´ë™
 
-    }
-    void Start()
+	}
+	void Start()
     {
         
     }
