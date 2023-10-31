@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Threading;
 
 class MyImage
 {
@@ -32,6 +33,10 @@ class MyImage
     {
         return this.isCat;
     }
+	public void SetIsCat(bool isCat)
+	{
+		this.isCat = isCat;
+	}
 }
 
 public class gameManager : MonoBehaviour
@@ -72,9 +77,11 @@ public class gameManager : MonoBehaviour
 
     int cardStocks = 0;
     int cardsLeft = 0;
+	List<int> catList = new List<int>();
 
-    bool isEnd = false;
+	bool isEnd = false;
     bool isHurry = false;
+    bool[] check = new bool[0];
     Animator timeTxtAnim;
 
 
@@ -87,52 +94,32 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        clearMatchTxt();
+		clearMatchTxt();
         currentTime = limitTime;
         isEnd = false;
         isHurry = false;
         cardStocks = 4*4;
-        cardsLeft = cardStocks;
-        bool[] check = new bool[cardStocks];
+		// 자리가 남아있는지 확인하는 변수
+		cardsLeft = cardStocks;
+        check = new bool[cardStocks];
 
-        Time.timeScale = 1.0f;
+		for (int i = 0; i < cardStocks; i++)
+		{
+			check[i] = false;
+		}
+		Time.timeScale = 1.0f;
 
         audioSource.clip = bgmusic;
         audioSource.Play();//bgm 재생
-
         setImages();
-        shuffleImages(images);
+		generateCard(chooseCat());
+        separteCats();
+		shuffleImages(images);
 
-        for (int i=0; i < cardStocks; i++)
+        // 카드갯수/2 - 1만큼 반복한다.
+        for (int i = 0; i < (cardStocks/2 - 1); i++)
         {
-                check[i] = false;
-        }
-
-        for (int i = 0; i < cardStocks/2; i++)
-        {
-            int doubleCheck = 0;
-            while(true)
-            {
-                int rand = Random.Range(0, cardStocks);
-                if(check[rand] == false)
-                {
-                    check[rand] = true;
-                    GameObject newCard = Instantiate(card);
-                    newCard.transform.parent = GameObject.Find("cards").transform;
-                    float x = (rand / 4) * 1.4f - 2.1f;
-                    float y = (rand % 4) * 1.4f - 3.0f;
-                    newCard.transform.position = new Vector3(x, y, 0);
-                    newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i].GetResourceName());
-                    newCard.transform.name = images[i].GetName(); // 카드에게 각각 이름을 부여
-                    doubleCheck++;
-                }
-                if(doubleCheck >= 2)
-                {
-                    doubleCheck =0;
-                    break;
-                }
-            }
-                
+            generateCard(i);
         }
 
     }
@@ -252,6 +239,29 @@ public class gameManager : MonoBehaviour
         matchTxt.text ="";
     }
 
+    void separteCats()
+    {
+        for(int i=0; i < catList.Count; i++)
+        {
+            int count = images.Length - 1;
+            while(true)
+            {
+                if (images[count].GetIsCat())
+                {
+                    count--;
+                }
+                else
+                {
+                    MyImage temp;
+                    temp = images[catList[i]];
+                    images[catList[i]] = images[count];
+                    images[count] = temp;
+                    break;
+                }
+            }
+        }
+    }
+
     // class의 배열을 랜덤하게 섞는 함수(인터넷에서 봄)
     MyImage[] shuffleImages(MyImage[] list)
     {
@@ -260,8 +270,8 @@ public class gameManager : MonoBehaviour
 
         for (int i = 0; i < list.Length; ++i)
         {
-            random1 = Random.Range(0, list.Length);
-            random2 = Random.Range(0, list.Length);
+            random1 = Random.Range(0, list.Length - catList.Count);
+            random2 = Random.Range(0, list.Length - catList.Count);
 
             temp = list[random1];
             list[random1] = list[random2];
@@ -292,12 +302,15 @@ public class gameManager : MonoBehaviour
         images[5] = new MyImage();
         images[5].SetName("군침냥");
         images[5].SetResourceName("team5");
-        images[6] = new MyImage();
+		images[5].SetIsCat(true);
+		images[6] = new MyImage();
         images[6].SetName("소파냥");
         images[6].SetResourceName("team6");
-        images[7] = new MyImage();
+		images[6].SetIsCat(true);
+		images[7] = new MyImage();
         images[7].SetName("팝 캣");
         images[7].SetResourceName("team7");
+		images[7].SetIsCat(true);
 		images[8] = new MyImage();
 		images[8].SetName("전은하");
 		images[8].SetResourceName("team8");
@@ -384,4 +397,41 @@ public class gameManager : MonoBehaviour
         }
 
     }
+
+	int chooseCat()
+	{
+		// 사진에서 고양이만 찾은 다음 거기에서 하나 선택 -> 숫자 return
+		for (int i = 0; i < images.Length; i++)
+		{
+			if (images[i].GetIsCat()) catList.Add(i);
+		}
+        return catList[Random.Range(0, catList.Count)];
+	}
+
+    void generateCard(int i)
+    {
+		int doubleCheck = 0;
+		while (true)
+		{
+			int rand = Random.Range(0, cardStocks);
+			if (check[rand] == false)
+			{
+				check[rand] = true;
+				GameObject newCard = Instantiate(card);
+				newCard.transform.parent = GameObject.Find("cards").transform;
+				float x = (rand / 4) * 1.4f - 2.1f;
+				float y = (rand % 4) * 1.4f - 3.0f;
+				newCard.transform.position = new Vector3(x, y, 0);
+				newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i].GetResourceName());
+				newCard.transform.name = images[i].GetName(); // 카드에게 각각 이름을 부여
+				doubleCheck++;
+			}
+			if (doubleCheck >= 2)
+			{
+				doubleCheck = 0;
+				break;
+			}
+		}
+	}
+
 }
