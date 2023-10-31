@@ -190,7 +190,11 @@ public class gameManager : MonoBehaviour
                 endPanel.SetActive(true);
                 Time.timeScale = 0.0f;
                 setEndPanel();
-                
+
+                FindObjectOfType<achieveManager>().UnlockAchievement("UnlockWoman"); // 업적 이름을 전달
+                FindObjectOfType<achieveManager>().UnlockAchievement("UnlockMan"); // 업적 이름을 전달
+
+
                 audioSource.clip = bgmusic;
                 audioSource.Pause();
                 audioSource.clip = success;

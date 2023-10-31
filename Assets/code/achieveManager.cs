@@ -31,9 +31,15 @@ public class achieveManager : MonoBehaviour
             //실제 실행되는지 실험해볼때는 0 => 1로 바꾼뒤 edit에 Clear All PlayerPref 클릭 후 실행
         }
     }
+    public void UnlockAchievement(string achievementName)
+    {
+        PlayerPrefs.SetInt(achievementName, 1); // 해당 업적을 잠금 해제로 표시
+        PlayerPrefs.Save(); // 변경된 데이터를 저장
+        UnlockCharacter(); // 업적이 달성되었으므로 캐릭터를 잠금 해제하도록 호출
+    }
     void Start()
     {
-        UnlockCharacter();
+        
     }
 
     void UnlockCharacter()
@@ -53,27 +59,5 @@ public class achieveManager : MonoBehaviour
     {
         
     }
-    private void LateUpdate()
-    {
-        foreach(Achive achieve in achives)
-        {
-            CheckAchive(achieve);
-        }
-
-    }
-    void CheckAchive(Achive achive)
-    {
-        bool isAchive = false;
-
-        switch(achive)
-        {
-            case Achive.UnlockMan:
-                isAchive = gameManager.
-                break;
-
-            case Achive.UnlockWoman: 
-                break;
-
-        }
-    }
+    
 }
