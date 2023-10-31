@@ -242,28 +242,28 @@ public class gameManager : MonoBehaviour
         // 이미지의 이름과 파일명 할당
         // resource의 파일명은 setResourceName에, 사진 주인공은 setName
         images[0] = new MyImage();
-        images[0].SetName("르탄이1");
-        images[0].SetResourceName("rtan0");
+        images[0].SetName("황선범");
+        images[0].SetResourceName("team0");
         images[1] = new MyImage();
-        images[1].SetName("르탄이2");
-        images[1].SetResourceName("rtan1");
+        images[1].SetName("전은하");
+        images[1].SetResourceName("team1");
         images[2] = new MyImage();
-        images[2].SetName("르탄이3");
-        images[2].SetResourceName("rtan2");
+        images[2].SetName("박기혁");
+        images[2].SetResourceName("team2");
         images[3] = new MyImage();
-        images[3].SetName("르탄이4");
-        images[3].SetResourceName("rtan3");
+        images[3].SetName("정용태");
+        images[3].SetResourceName("team3");
         images[4] = new MyImage();
-        images[4].SetName("르탄이5");
-        images[4].SetResourceName("rtan4");
+        images[4].SetName("강건욱");
+        images[4].SetResourceName("team4");
         images[5] = new MyImage();
-        images[5].SetName("르탄이6");
-        images[5].SetResourceName("rtan5");
+        images[5].SetName("군침냥");
+        images[5].SetResourceName("team5");
         images[6] = new MyImage();
-        images[6].SetName("르탄이7");
-        images[6].SetResourceName("rtan6");
+        images[6].SetName("소파냥");
+        images[6].SetResourceName("team6");
         images[7] = new MyImage();
-        images[7].SetName("르탄이8");
-        images[7].SetResourceName("rtan7");
+        images[7].SetName("팝 캣");
+        images[7].SetResourceName("team7");
     }
 }
