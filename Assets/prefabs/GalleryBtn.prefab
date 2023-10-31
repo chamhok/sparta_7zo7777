@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3472761990063583832}
   - component: {fileID: 8046311915952974030}
   - component: {fileID: 7955598745686098109}
-  - component: {fileID: 1608781584807338168}
   - component: {fileID: 8037517410915894197}
+  - component: {fileID: 1608781584807338168}
   m_Layer: 5
   m_Name: GalleryBtn
   m_TagString: Untagged
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: popupOpen
-        m_Mode: 3
+      - m_Target: {fileID: 1608781584807338168}
+        m_TargetAssemblyTypeName: GalleryBtn, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -232,20 +232,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1608781584807338168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287394793920189147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07cc578a4304294fa51e4eb515c67bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  num: 0
-  backSprite: {fileID: 0}
 --- !u!95 &8037517410915894197
 Animator:
   serializedVersion: 5
@@ -267,6 +253,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1608781584807338168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287394793920189147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07cc578a4304294fa51e4eb515c67bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  num: 0
+  backSprite: {fileID: 0}
 --- !u!1 &5983017905992400412
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,10 +2,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class GalleryBtn : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
+public class GalleryBtn : MonoBehaviour, IPointerEnterHandler
 {
-    public int num; // cg번호
-    bool isGet = false; // 이 cg를 얻었는지
+
+    public enum WhoIs // 갤러리 팝업 enum과 목록 똑같아야한다
+    {
+        전은하,
+        황선범,
+        강건욱,
+        정용태,
+        박기혁,
+        냥이
+    }
+
+    public WhoIs whoIs;
+
 
 
     public Sprite backSprite; // cg 해금안됐을때 뜨는 뒷면 이미지
@@ -27,14 +38,14 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
 
     private void OnEnable()
     {
-        // 플레이어프리프에 카드 획득여부읽고 넣기
+      
 
-        if (!isGet)
+        if (false)   // 플레이어프리프에 카드 획득여부 넣기
         {
             img.sprite = backSprite;
         }
 
-        anim.SetBool("isGet", isGet);
+        anim.SetBool("isGet", false); // 플레이어프리프에 카드 획득여부 넣기
         anim.SetTrigger("go");
 
     }
@@ -47,15 +58,15 @@ public class GalleryBtn : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
 
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void Click()
     {
         if (audioSource != null)
             audioSource.Play();
 
 
-        galleryManager.PopupOpen(num);
+        galleryManager.PopupOpen(whoIs);
 
-        Debug.Log(num + "번 cg열립니다");
+        Debug.Log(whoIs + "번 cg열립니다");
 
     }
 
