@@ -1,25 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-
-
-public class startBtn : MonoBehaviour
+public class startbgm : MonoBehaviour
 {
-    public AudioClip click;
     public AudioSource audioSource;
-
-    public void GameStart()
-    {
-        audioSource.PlayOneShot(click);
-        SceneManager.LoadScene("MainScene");
-    }
-
+    public AudioClip startBgm;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource.clip = startBgm;
+        audioSource.Play();//bgm Àç»ý
     }
 
     // Update is called once per frame

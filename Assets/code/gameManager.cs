@@ -9,6 +9,10 @@ public class gameManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip match;
+    public AudioClip bgmusic;
+    public AudioClip defeat;
+    public AudioClip success;
+    public AudioClip wrong;
 
     public Text timeTxt;
     public Text tryTxt;
@@ -51,7 +55,13 @@ public class gameManager : MonoBehaviour
 
         Time.timeScale = 1.0f;
 
-        for(int i=0; i < cardStocks; i++)
+        audioSource.clip = bgmusic;
+        audioSource.Play();//bgm 재생
+
+        // Images Array 랜덤하게 섞기. 0번부터 요구하는 카드 갯수의 절반만 사용함.
+        ShuffleArray(images);
+
+        for (int i=0; i < cardStocks; i++)
         {
                 check[i] = false;
         }
@@ -99,6 +109,11 @@ public class gameManager : MonoBehaviour
 
             endPanel.SetActive(true);
             Time.timeScale = 0.0f;
+            audioSource.clip = bgmusic;
+            audioSource.Pause();
+            audioSource.clip = defeat;
+            audioSource.Play();
+            //30초 지나면 실패 음악으로 변경
         }
         else if (time > 2.0f && !isHurry)
         {
@@ -108,11 +123,17 @@ public class gameManager : MonoBehaviour
 
         }
     }
+    
 
-    public void isMatched()
+    // 카드의 뒤집는 횟수를 센다.
+    private void tryCounting()
     {
         tryCount++;
         tryTxt.text = tryCount + "번";
+     }
+    public void isMatched()
+    {
+        tryCounting();
         string firstCardImage = firstCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
         string secondCardImage = secondCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite.name;
 
@@ -127,10 +148,17 @@ public class gameManager : MonoBehaviour
             {
                 endPanel.SetActive(true);
                 Time.timeScale = 0.0f;
+                
+                audioSource.clip = bgmusic;
+                audioSource.Pause();
+                audioSource.clip = success;
+                audioSource.Play();
+                //카드 매칭이 끝나면 배경음악중지, 성공음악 재생
             }
         }
         else
         {
+            audioSource.PlayOneShot(wrong);
             setMatchTxt("꽝!!!");
             firstCard.GetComponent<card>().closeCard();
             secondCard.GetComponent<card>().closeCard();
@@ -175,5 +203,23 @@ public class gameManager : MonoBehaviour
     void clearMatchTxt()
     {
         matchTxt.text ="";
+    }
+
+    string[] ShuffleArray(string[] list)
+    {
+        int random1,  random2;
+        string temp;
+
+        for (int i = 0; i < list.Length; ++i)
+        {
+            random1 = Random.Range(0, list.Length);
+            random2 = Random.Range(0, list.Length);
+
+            temp = list[random1];
+            list[random1] = list[random2];
+            list[random2] = temp;
+        }
+
+        return list;
     }
 }
