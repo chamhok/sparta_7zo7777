@@ -49,9 +49,10 @@ public class gameManager : MonoBehaviour
     public Text timeTxt;
     public Text tryTxt;
     public Text matchTxt;
+    public Text matchingTxt;
 
     public GameObject endPanel;
-    int tryCount = 0;
+
     public GameObject card;
     public GameObject cards;
 
@@ -62,7 +63,8 @@ public class gameManager : MonoBehaviour
 
     public float limitTime = 30.0f;
     float currentTime = 0.0f;
-
+    int tryCount = 0;
+    int matchingCount = 0;
 
     // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
     // 차후에 스크립트(card.cs)에 변수를 할당하는 방식으로 고칠 수 있다.
@@ -142,7 +144,7 @@ public class gameManager : MonoBehaviour
 
         currentTime -= Time.deltaTime;
         timeTxt.text = currentTime.ToString("N2");
-
+                
         //제한시간이 지나면 게임 종료
         if (currentTime <= 0)
         {
@@ -166,8 +168,15 @@ public class gameManager : MonoBehaviour
     private void tryCounting()
     {
         tryCount++;
-        tryTxt.text = tryCount + "번";
+        tryTxt.text = tryCount + "번 시도함!";
      }
+        
+    // 카드의 매칭 횟수를 센다.
+    private void MachingCounting()
+    {
+        matchingCount++;
+        matchingTxt.text = matchingCount + "번 맞춤!";
+    }
     public void isMatched()
     {
         tryCounting();
@@ -176,6 +185,7 @@ public class gameManager : MonoBehaviour
 
         if (firstCardImage == secondCardImage)
         {
+            MachingCounting();
             audioSource.PlayOneShot(match);
             cardsLeft -= 2;
             firstCard.GetComponent<card>().destroyCard();
@@ -191,17 +201,19 @@ public class gameManager : MonoBehaviour
                 audioSource.clip = success;
                 audioSource.Play();
                 //카드 매칭이 끝나면 배경음악중지, 성공음악 재생
+
+
             }
         }
         else
-                {
-                        cathide();
-                        audioSource.PlayOneShot(wrong);
-                        setMatchTxt("꽝!!!");
-                        firstCard.GetComponent<card>().closeCard();
-                        secondCard.GetComponent<card>().closeCard();
-                }
-                if (IsInvoking("clearMatchTxt")) CancelInvoke("clearMatchTxt");
+        {
+                cathide();
+                audioSource.PlayOneShot(wrong);
+                setMatchTxt("꽝!!!");
+                firstCard.GetComponent<card>().closeCard();
+                secondCard.GetComponent<card>().closeCard();
+        }
+        if (IsInvoking("clearMatchTxt")) CancelInvoke("clearMatchTxt");
         Invoke("clearMatchTxt", 0.5f);
 
         firstCard = null;
