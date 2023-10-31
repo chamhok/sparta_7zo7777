@@ -5,6 +5,29 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+class MyImage
+{
+    string name;
+    string resourceName;
+
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+    public void SetResourceName(string resourceName)
+    {
+        this.resourceName = resourceName;
+    }
+    public string GetName()
+    {
+        return this.name;
+    }
+    public string GetResourceName()
+    {
+        return this.resourceName;
+    }
+}
+
 public class gameManager : MonoBehaviour
 {
     public AudioSource audioSource;
@@ -28,7 +51,11 @@ public class gameManager : MonoBehaviour
     public GameObject firstCard;
     public GameObject secondCard;
 
-    string[] images = { "rtan0", "rtan1", "rtan2", "rtan3", "rtan4", "rtan5", "rtan6", "rtan7" };
+
+    // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
+    // 차후에 스크립트(card.cs)에 변수를 할당하는 방식으로 고칠 수 있다.
+    MyImage[] images = new MyImage[8];
+
     int cardStocks = 0;
     int cardsLeft = 0;
 
@@ -58,8 +85,8 @@ public class gameManager : MonoBehaviour
         audioSource.clip = bgmusic;
         audioSource.Play();//bgm 재생
 
-        // Images Array 랜덤하게 섞기. 0번부터 요구하는 카드 갯수의 절반만 사용함.
-        ShuffleArray(images);
+        setImages();
+        shuffleImages(images);
 
         for (int i=0; i < cardStocks; i++)
         {
@@ -80,7 +107,7 @@ public class gameManager : MonoBehaviour
                     float x = (rand / 4) * 1.4f - 2.1f;
                     float y = (rand % 4) * 1.4f - 3.0f;
                     newCard.transform.position = new Vector3(x, y, 0);
-                    newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i]);
+                    newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i].GetResourceName());
                     doubleCheck++;
                 }
                 if(doubleCheck >= 2)
@@ -168,31 +195,18 @@ public class gameManager : MonoBehaviour
 
         firstCard = null;
         secondCard = null;
+    }
 
-        string setTxt(string name)
+    string setTxt(string name)
+    {
+        for(int i=0;i< images.Length; i++)
         {
-            // init error risk
-            int val = 10;
-            for(int i=0; i < images.Length ; i++)
+            if(name == images[i].GetResourceName())
             {
-                if(name == images[i]) val = i;
+                return images[i].GetName();
             }
-            if(val < 3)
-            {
-                return ("르탄이!");
-            }
-            else if(val < 6)
-            {
-                return ("르탄이!!");
-            }
-            else if(val < 9)
-            {
-                return "르탄이!!!";
-            }
-            return "오류";
         }
-
-
+        return "오류";
     }
 
     void setMatchTxt(string txt)
@@ -205,10 +219,11 @@ public class gameManager : MonoBehaviour
         matchTxt.text ="";
     }
 
-    string[] ShuffleArray(string[] list)
+    // class의 배열을 랜덤하게 섞는 함수(인터넷에서 봄)
+    MyImage[] shuffleImages(MyImage[] list)
     {
         int random1,  random2;
-        string temp;
+        MyImage temp;
 
         for (int i = 0; i < list.Length; ++i)
         {
@@ -221,5 +236,34 @@ public class gameManager : MonoBehaviour
         }
 
         return list;
+    }
+    void setImages()
+    {
+        // 이미지의 이름과 파일명 할당
+        // resource의 파일명은 setResourceName에, 사진 주인공은 setName
+        images[0] = new MyImage();
+        images[0].SetName("르탄이1");
+        images[0].SetResourceName("rtan0");
+        images[1] = new MyImage();
+        images[1].SetName("르탄이2");
+        images[1].SetResourceName("rtan1");
+        images[2] = new MyImage();
+        images[2].SetName("르탄이3");
+        images[2].SetResourceName("rtan2");
+        images[3] = new MyImage();
+        images[3].SetName("르탄이4");
+        images[3].SetResourceName("rtan3");
+        images[4] = new MyImage();
+        images[4].SetName("르탄이5");
+        images[4].SetResourceName("rtan4");
+        images[5] = new MyImage();
+        images[5].SetName("르탄이6");
+        images[5].SetResourceName("rtan5");
+        images[6] = new MyImage();
+        images[6].SetName("르탄이7");
+        images[6].SetResourceName("rtan6");
+        images[7] = new MyImage();
+        images[7].SetName("르탄이8");
+        images[7].SetResourceName("rtan7");
     }
 }
