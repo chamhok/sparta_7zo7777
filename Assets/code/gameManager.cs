@@ -55,6 +55,8 @@ public class gameManager : MonoBehaviour
     public GameObject firstCard;
     public GameObject secondCard;
 
+    public float limittime = 5.0f;
+
 
     // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
     // 차후에 스크립트(card.cs)에 변수를 할당하는 방식으로 고칠 수 있다.
@@ -136,12 +138,15 @@ public class gameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        if (time > 30.0f)
+        //제한시간이 지나면 게임 종료
+        if (time > limittime)
         {
             isEnd = true;
 
             endPanel.SetActive(true);
+
             Time.timeScale = 0.0f;
+                setEndPanel();
             audioSource.clip = bgmusic;
             audioSource.Pause();
             audioSource.clip = defeat;
