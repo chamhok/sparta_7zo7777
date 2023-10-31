@@ -5,14 +5,6 @@ using UnityEngine.UI;
 
 public class GalleryManager : MonoBehaviour
 {
-
-    public Sprite[] faces;
-    public string[] tmis;
-
-    public Text nameTxt;
-    public Image faceImg;
-    public Text tmiTxt;
-
     public enum WhoIs
     {
         전은하,
@@ -23,9 +15,15 @@ public class GalleryManager : MonoBehaviour
         냥이
     }
 
+    public Sprite[] faces; // enum의 순서대로 프사를 넣어주세요.
+    public string[] tmis; // enum의 순서대로 설명을 적어주세요.
+
+    public Text nameTxt;
+    public Image faceImg;
+    public Text tmiTxt;
+
     public GalleryPopup galleryPopup;
     private Dictionary<int, ProfileSetting> profile;
-
 
     void Awake()
     {
@@ -35,7 +33,6 @@ public class GalleryManager : MonoBehaviour
         {
             profile.Add(i, new ProfileSetting(((WhoIs)(i)).ToString(), faces[i], tmis[i]));
         }
-
     }
 
     public void PopupOpen(int num)

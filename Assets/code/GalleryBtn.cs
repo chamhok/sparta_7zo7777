@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class GalleryBtn : MonoBehaviour
 {
-
     public GalleryManager.WhoIs whoIs;
 
     AudioSource audioSource;
@@ -12,7 +11,6 @@ public class GalleryBtn : MonoBehaviour
     public GameObject blindObj;
 
     Button btn;
-
 
     void Awake()
     {
@@ -37,10 +35,7 @@ public class GalleryBtn : MonoBehaviour
             audioSource.Play();
 
         galleryManager.PopupOpen((int)whoIs);
-
     }
-
-
 }
 
 
