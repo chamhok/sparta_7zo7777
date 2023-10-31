@@ -62,6 +62,7 @@ public class gameManager : MonoBehaviour
     public GameObject secondCard;
 
     public float limitTime = 5.0f;
+    public int difficult = 0;
     float currentTime = 0.0f;
     int tryCount = 0;
     int matchingCount = 0;
@@ -88,10 +89,11 @@ public class gameManager : MonoBehaviour
     void Start()
     {
         clearMatchTxt();
+        difficult = GameObject.Find("difficultysend").GetComponent<difficultysend>().difficult;
         currentTime = limitTime;
         isEnd = false;
         isHurry = false;
-        cardStocks = 4*4;
+        cardStocks = 4*(3+difficult);
         cardsLeft = cardStocks;
         bool[] check = new bool[cardStocks];
 
@@ -119,8 +121,8 @@ public class gameManager : MonoBehaviour
                     check[rand] = true;
                     GameObject newCard = Instantiate(card);
                     newCard.transform.parent = GameObject.Find("cards").transform;
-                    float x = (rand / 4) * 1.4f - 2.1f;
-                    float y = (rand % 4) * 1.4f - 3.0f;
+                    float x = (rand % 4) * 1.4f - 2.1f;
+                    float y = -(rand / 4) * 1.4f + (0.8f + 0.4f * difficult);
                     newCard.transform.position = new Vector3(x, y, 0);
                     newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i].GetResourceName());
                     newCard.transform.name = images[i].GetName(); // 카드에게 각각 이름을 부여
@@ -134,6 +136,7 @@ public class gameManager : MonoBehaviour
             }
                 
         }
+        Debug.Log("난이도 = " + difficult);
 
     }
 
