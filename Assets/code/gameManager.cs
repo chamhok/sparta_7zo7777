@@ -58,7 +58,7 @@ public class gameManager : MonoBehaviour
 
     // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
     // 차후에 스크립트(card.cs)에 변수를 할당하는 방식으로 고칠 수 있다.
-    MyImage[] images = new MyImage[8];
+    MyImage[] images = new MyImage[20];
 
     int cardStocks = 0;
     int cardsLeft = 0;
@@ -284,7 +284,43 @@ public class gameManager : MonoBehaviour
         images[7] = new MyImage();
         images[7].SetName("팝 캣");
         images[7].SetResourceName("team7");
-    }
+		images[8] = new MyImage();
+		images[8].SetName("전은하");
+		images[8].SetResourceName("team8");
+		images[9] = new MyImage();
+		images[9].SetName("박기혁");
+		images[9].SetResourceName("team9");
+		images[10] = new MyImage();
+		images[10].SetName("전은하");
+		images[10].SetResourceName("team10");
+		images[11] = new MyImage();
+		images[11].SetName("강건욱");
+		images[11].SetResourceName("team11");
+		images[12] = new MyImage();
+		images[12].SetName("강건욱");
+		images[12].SetResourceName("team12");
+		images[13] = new MyImage();
+		images[13].SetName("황선범");
+        images[13].SetResourceName("team13");
+		images[14] = new MyImage();
+		images[14].SetName("세븐");
+        images[14].SetResourceName("team14");
+		images[15] = new MyImage();
+		images[15].SetName("정용태");
+        images[15].SetResourceName("team15");
+		images[16] = new MyImage();
+		images[16].SetName("박기혁");
+		images[16].SetResourceName("team16");
+		images[17] = new MyImage();
+		images[17].SetName("세븐");
+		images[17].SetResourceName("team17");
+		images[18] = new MyImage();
+		images[18].SetName("박기혁");
+		images[18].SetResourceName("team18");
+		images[19] = new MyImage();
+		images[19].SetName("고양이");
+		images[19].SetResourceName("team19");
+	}
     void setEndPanel()
     {
         // 최단속도 설정
