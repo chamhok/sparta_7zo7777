@@ -283,69 +283,37 @@ public class gameManager : MonoBehaviour
     {
         // 이미지의 이름과 파일명 할당
         // resource의 파일명은 setResourceName에, 사진 주인공은 setName
-        images[0] = new MyImage();
+
+        // 해당 for문의 조건문은 수동으로 바꿔야 함 (개선 필요!)
+        for(int i=0; i< 20; i++)
+        {
+            images[i] = new MyImage();
+            images[i].SetResourceName("team" + i.ToString());
+        }
+
         images[0].SetName("황선범");
-        images[0].SetResourceName("team0");
-        images[1] = new MyImage();
         images[1].SetName("전은하");
-        images[1].SetResourceName("team1");
-        images[2] = new MyImage();
         images[2].SetName("박기혁");
-        images[2].SetResourceName("team2");
-        images[3] = new MyImage();
         images[3].SetName("정용태");
-        images[3].SetResourceName("team3");
-        images[4] = new MyImage();
         images[4].SetName("강건욱");
-        images[4].SetResourceName("team4");
-        images[5] = new MyImage();
         images[5].SetName("군침냥");
-        images[5].SetResourceName("team5");
 		images[5].SetIsCat(true);
-		images[6] = new MyImage();
         images[6].SetName("소파냥");
-        images[6].SetResourceName("team6");
 		images[6].SetIsCat(true);
-		images[7] = new MyImage();
         images[7].SetName("팝 캣");
-        images[7].SetResourceName("team7");
 		images[7].SetIsCat(true);
-		images[8] = new MyImage();
 		images[8].SetName("전은하");
-		images[8].SetResourceName("team8");
-		images[9] = new MyImage();
 		images[9].SetName("박기혁");
-		images[9].SetResourceName("team9");
-		images[10] = new MyImage();
 		images[10].SetName("전은하");
-		images[10].SetResourceName("team10");
-		images[11] = new MyImage();
 		images[11].SetName("강건욱");
-		images[11].SetResourceName("team11");
-		images[12] = new MyImage();
 		images[12].SetName("강건욱");
-		images[12].SetResourceName("team12");
-		images[13] = new MyImage();
 		images[13].SetName("황선범");
-        images[13].SetResourceName("team13");
-		images[14] = new MyImage();
 		images[14].SetName("세븐");
-        images[14].SetResourceName("team14");
-		images[15] = new MyImage();
 		images[15].SetName("정용태");
-        images[15].SetResourceName("team15");
-		images[16] = new MyImage();
 		images[16].SetName("박기혁");
-		images[16].SetResourceName("team16");
-		images[17] = new MyImage();
 		images[17].SetName("세븐");
-		images[17].SetResourceName("team17");
-		images[18] = new MyImage();
 		images[18].SetName("박기혁");
-		images[18].SetResourceName("team18");
-		images[19] = new MyImage();
 		images[19].SetName("고양이");
-		images[19].SetResourceName("team19");
         images[19].SetIsCat(true);
 	}
     void gameEnd(bool success)

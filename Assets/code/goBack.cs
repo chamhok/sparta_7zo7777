@@ -11,13 +11,13 @@ public class goBack : MonoBehaviour
     public void goStartScene()
     {
         audioSource.PlayOneShot(click);
-        //Å¬¸¯ »ç¿îµå
-        SceneManager.LoadScene("StartScene");
-        //½ÃÀÛÈ­¸éÀ¸·Î ÀÌµ¿
+		//í´ë¦­ ì‚¬ìš´ë“œ
+		SceneManager.LoadScene("StartScene");
+		//ì‹œì‘í™”ë©´ìœ¼ë¡œ ì´ë™
 
-    }
-    // Start is called before the first frame update
-    void Start()
+	}
+	// Start is called before the first frame update
+	void Start()
     {
         
     }
