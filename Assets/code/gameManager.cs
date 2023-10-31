@@ -61,7 +61,7 @@ public class gameManager : MonoBehaviour
     public GameObject firstCard;
     public GameObject secondCard;
 
-    public float limitTime = 30.0f;
+    public float limitTime = 5.0f;
     float currentTime = 0.0f;
     int tryCount = 0;
     int matchingCount = 0;
@@ -334,7 +334,6 @@ public class gameManager : MonoBehaviour
 		images[19] = new MyImage();
 		images[19].SetName("고양이");
 		images[19].SetResourceName("team19");
-        Debug.Log(images[19].GetIsCat());
 	}
     void gameEnd(bool success)
     {

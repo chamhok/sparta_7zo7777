@@ -5,17 +5,18 @@ using UnityEngine.SceneManagement;
 
 
 
-public class goGallery : MonoBehaviour
+public class GoHome : MonoBehaviour
 {
     public AudioClip click;
     public AudioSource audioSource;
 
-    public void GoHome()
+    public void goHome()
     {
         audioSource.PlayOneShot(click);
         SceneManager.LoadScene("StartScene");
-    }
-    // Start is called before the first frame update
+        Time.timeScale = 1.0f;
+     }
+        // Start is called before the first frame update
     void Start()
     {
         
