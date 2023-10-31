@@ -7,8 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class startBtn : MonoBehaviour
 {
+    public AudioClip click;
+    public AudioSource audioSource;
+
     public void GameStart()
     {
+        audioSource.PlayOneShot(click);
         SceneManager.LoadScene("MainScene");
     }
 

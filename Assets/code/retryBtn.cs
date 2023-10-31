@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class retryBtn : MonoBehaviour
 {
+    public AudioClip click;
+    public AudioSource audioSource;
+
     public void ReGame()
     {
+        audioSource.PlayOneShot(click);
         SceneManager.LoadScene("MainScene");
     }
 
