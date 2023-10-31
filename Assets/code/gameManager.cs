@@ -96,6 +96,7 @@ public class gameManager : MonoBehaviour
         cardStocks = 4*(3+difficult);
         cardsLeft = cardStocks;
         bool[] check = new bool[cardStocks];
+        Destroy(GameObject.Find("difficultysend"));
 
         Time.timeScale = 1.0f;
 
