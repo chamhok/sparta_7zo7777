@@ -73,3 +73,6 @@ crashlytics-build.properties
 .vscode/settings.json
 .vscode/launch.json
 .vscode/extensions.json
+ProjectSettings/BurstAotSettings_Android.json
+ProjectSettings/BurstAotSettings_StandaloneWindows.json
+ProjectSettings/CommonBurstAotSettings.json
