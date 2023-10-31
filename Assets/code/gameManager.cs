@@ -10,6 +10,8 @@ public class gameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip match;
     public AudioClip bgmusic;
+    public AudioClip defeat;
+    public AudioClip success;
 
     public Text timeTxt;
     public Text tryTxt;
@@ -103,9 +105,11 @@ public class gameManager : MonoBehaviour
 
             endPanel.SetActive(true);
             Time.timeScale = 0.0f;
-
+            audioSource.clip = bgmusic;
             audioSource.Pause();
-            //30초 지나면 음악 중지
+            audioSource.clip = defeat;
+            audioSource.Play();
+            //30초 지나면 실패 음악으로 변경
         }
         else if (time > 2.0f && !isHurry)
         {
@@ -141,8 +145,11 @@ public class gameManager : MonoBehaviour
                 endPanel.SetActive(true);
                 Time.timeScale = 0.0f;
                 
+                audioSource.clip = bgmusic;
                 audioSource.Pause();
-                //카드 매칭이 끝나면 음악중지
+                audioSource.clip = success;
+                audioSource.Play();
+                //카드 매칭이 끝나면 배경음악중지, 성공음악 재생
             }
         }
         else
