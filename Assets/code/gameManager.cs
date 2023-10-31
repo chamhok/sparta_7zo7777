@@ -52,6 +52,8 @@ public class gameManager : MonoBehaviour
     public GameObject secondCard;
 
 
+    // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
+    // 차후에 스크립트(card.cs)에 변수를 할당하는 방식으로 고칠 수 있다.
     MyImage[] images = new MyImage[8];
 
     int cardStocks = 0;
@@ -217,6 +219,7 @@ public class gameManager : MonoBehaviour
         matchTxt.text ="";
     }
 
+    // class의 배열을 랜덤하게 섞는 함수(인터넷에서 봄)
     MyImage[] shuffleImages(MyImage[] list)
     {
         int random1,  random2;
