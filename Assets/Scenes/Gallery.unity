@@ -991,9 +991,9 @@ GameObject:
   - component: {fileID: 577684679}
   - component: {fileID: 577684684}
   - component: {fileID: 577684683}
-  - component: {fileID: 577684682}
   - component: {fileID: 577684681}
   - component: {fileID: 577684680}
+  - component: {fileID: 577684685}
   m_Layer: 5
   m_Name: goBack
   m_TagString: Untagged
@@ -1065,9 +1065,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 577684682}
-        m_TargetAssemblyTypeName: goGallery, Assembly-CSharp
-        m_MethodName: GoHome
+      - m_Target: {fileID: 577684685}
+        m_TargetAssemblyTypeName: goBack, Assembly-CSharp
+        m_MethodName: goStartScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1173,20 +1173,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &577684682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577684678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3d9726d9b7c8744a65a574500e1131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  click: {fileID: 8300000, guid: dbcdb1d8072823d48bda47489ac471c8, type: 3}
-  audioSource: {fileID: 577684681}
 --- !u!114 &577684683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,6 +1211,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577684678}
   m_CullTransparentMesh: 1
+--- !u!114 &577684685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577684678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f570bf8d2e4be4d89a1187e54c0f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: {fileID: 8300000, guid: dbcdb1d8072823d48bda47489ac471c8, type: 3}
+  audioSource: {fileID: 577684681}
 --- !u!1 &752175135
 GameObject:
   m_ObjectHideFlags: 0
