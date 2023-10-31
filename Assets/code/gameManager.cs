@@ -37,6 +37,9 @@ public class gameManager : MonoBehaviour
     public AudioClip success;
     public AudioClip wrong;
 
+    public Text fastestTxt;
+    public Text currentScoreTxt;
+    public Text highScoreTxt;
     public Text timeTxt;
     public Text tryTxt;
     public Text matchTxt;
@@ -173,8 +176,10 @@ public class gameManager : MonoBehaviour
             setMatchTxt(setTxt(firstCardImage));
             if (cardsLeft == 0)
             {
+                // 게임종료, endpanel 활성화 + 점수 계산
                 endPanel.SetActive(true);
                 Time.timeScale = 0.0f;
+                setEndPanel();
                 
                 audioSource.clip = bgmusic;
                 audioSource.Pause();
@@ -265,5 +270,49 @@ public class gameManager : MonoBehaviour
         images[7] = new MyImage();
         images[7].SetName("팝 캣");
         images[7].SetResourceName("team7");
+    }
+    void setEndPanel()
+    {
+        // 최단속도 설정
+        if(PlayerPrefs.HasKey("fastest"))
+        {
+            if(PlayerPrefs.GetFloat("fastest") >= time)
+            {
+                PlayerPrefs.GetFloat("fastest", time);
+                fastestTxt.text = time.ToString("N2");
+            }
+            else
+            {
+                fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
+            }
+        }
+        else
+        {
+            PlayerPrefs.GetFloat("fastest", time);
+            fastestTxt.text = time.ToString("N2");
+        }
+        // 이번 판 점수 설정
+        float currentScore = 50f + (30f-time) - (float) tryCount/2; 
+        currentScoreTxt.text = currentScore.ToString("N2");
+
+        // 최고점 설정 <- 최단속도랑 똑같은데 key만 다름
+        if(PlayerPrefs.HasKey("maxScore"))
+        {
+            if(PlayerPrefs.GetFloat("maxScore") <= currentScore)
+            {
+                PlayerPrefs.GetFloat("maxScore", currentScore);
+                highScoreTxt.text = currentScore.ToString("N2");
+            }
+            else
+            {
+                highScoreTxt.text = PlayerPrefs.GetFloat("maxScore").ToString("N2");
+            }
+        }
+        else
+        {
+            PlayerPrefs.GetFloat("maxScore", time);
+            highScoreTxt.text = currentScore.ToString("N2");
+        }
+
     }
 }
