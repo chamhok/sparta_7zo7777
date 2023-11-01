@@ -182,7 +182,8 @@ public class gameManager : MonoBehaviour
             firstCard.GetComponent<card>().destroyCard();
             secondCard.GetComponent<card>().destroyCard();
             setMatchTxt(setTxt(firstCardImage));
-            if (cardsLeft == 0)
+            addGallery(firstCardImage);
+			if (cardsLeft == 0)
             {
                 // 게임종료, endpanel 활성화 + 점수 계산
                 gameEnd(true);
@@ -403,6 +404,19 @@ public class gameManager : MonoBehaviour
 				break;
 			}
 		}
+	}
+
+    void addGallery(string resourceName)
+    {
+		// playerprefs에 리소스명을 저장 -> gallery Scene에서 이용할 수 있도록
+        if(PlayerPrefs.HasKey(resourceName))
+        {
+            return;
+        }
+        else
+        {
+            PlayerPrefs.SetInt(resourceName, 1);
+        }
 	}
 
 }
