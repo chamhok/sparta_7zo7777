@@ -3,7 +3,6 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static GalleryBtn;
 
 public class GalleryBtn : MonoBehaviour
 {
@@ -29,7 +28,6 @@ public class GalleryBtn : MonoBehaviour
     public GameObject unLockCard; // UnLock 이미지
 
     Button btn; // 버튼 컴포넌트
-
 
     void Awake()
     {
@@ -84,27 +82,15 @@ public class GalleryBtn : MonoBehaviour
                 Debug.Log("버그입니다!");
                 break;
         }
-<<<<<<< HEAD
 
         Set(achive);
-
-
-=======
-    }
-    void Start()
-    {
-        string myResourceName = gameObject.transform.Find("unlocked").GetComponent<Image>().sprite.name;
-        Debug.Log(myResourceName);
-        Debug.Log(PlayerPrefs.HasKey(myResourceName));
-        UnlockCharacter();
->>>>>>> 67aed5e26b0be7462d6c0cfec259105ff04b5d53
     }
 
     void Set(Achives ach)
     {
         for (int i = 0; i < myKey.Length; i++)
         {
-            if (!PlayerPrefs.HasKey(myKey[i].name)) // 플레이어프리프에 내사진 해금이 전부 됐을때 버튼  on
+            if (!PlayerPrefs.HasKey(myKey[i].name)) // 플레이어프리프에 하나라도 안본 내사진이있다면 버튼 안열림
             {
                 Debug.Log("버튼 닫힙니다");
                 unLockCard.SetActive(true);
@@ -131,105 +117,5 @@ public class GalleryBtn : MonoBehaviour
 
         galleryManager.PopupOpen((int)achive);
     }
-<<<<<<< HEAD
-
-}
-=======
 }
     
-    /*void LateUpdate()
-    {
-        foreach (Achive achive in achives)
-        {
-            CheckAchive(achive);
-        }
-    }
-    void CheckAchive(Achive achive)
-    {
-        bool isAchive = false;
-        GameObject[] LockCardImage;
-        FirstCardImage = PlayerPrefs.GetString("Canvas/Scroll view/Viewpoint/Content/Gallery");
-        LockCardImage = GameObject.FindGameObjectsWithTag("GalleryBtn");
-        
-        switch (achive)
-        {
-            case Achive.UnlockFirst:
-                isAchive = false; // 초기화
-                foreach (GameObject cardImage in LockCardImage)
-                {
-                    if (cardImage.name == FirstCardImage)
-                    {
-                        isAchive = true;
-                        break;
-                    }
-                }
-                break;
-
-            case Achive.UnlockSecond:
-                isAchive = false; // 초기화
-                foreach (GameObject cardImage in LockCardImage)
-                {
-                    if (cardImage.name == "황선범")
-                    {
-                        isAchive = true;
-                        break;
-                    }
-                }                
-                break;
-
-            case Achive.UnlockThird:
-                isAchive = false; // 초기화
-                foreach (GameObject cardImage in LockCardImage)
-                {
-                    if (cardImage.name == "강건욱")
-                    {
-                        isAchive = true;
-                        break;
-                    }
-                }                
-                break;
-
-            case Achive.UnlockFourth:
-                isAchive = false; // 초기화
-                foreach (GameObject cardImage in LockCardImage)
-                {
-                    if (cardImage.name == "정용태")
-                    {
-                        isAchive = true;
-                        break;
-                    }
-                }                                
-                break;
-
-            case Achive.UnlockFifth:
-                isAchive = false; // 초기화
-                foreach (GameObject cardImage in LockCardImage)
-                {
-                    if (cardImage.name == "박기혁")
-                    {
-                        isAchive = true;
-                        break;
-                    }
-                }                
-                break;
-
-            case Achive.UnlockSixth:
-                isAchive = false; // 초기화
-                foreach (GameObject cardImage in LockCardImage)
-                {
-                    if (cardImage.name == "군침냥")
-                    {
-                        isAchive = true;
-                        break;
-                    }
-                }                
-                break;
-                
-        }
-        if (isAchive && PlayerPrefs.GetInt(achive.ToString()) == 0)
-        {
-            PlayerPrefs.SetInt(achive.ToString(), 1);
-        }
-    }
-*/
->>>>>>> 67aed5e26b0be7462d6c0cfec259105ff04b5d53
