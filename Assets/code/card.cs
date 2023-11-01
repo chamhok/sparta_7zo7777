@@ -15,8 +15,13 @@ public class card : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+	private void Start()
+	{
+        presentOneShot(1.0f);
+	}
 
-    public void openCard()
+
+	public void openCard()
     {
         audioSource.PlayOneShot(flip);
         //�������� ���� �Ҹ�
@@ -63,6 +68,12 @@ public class card : MonoBehaviour
         }
     }
 
+    public void closeCardOneShot()
+    {
+		// presentOneshot용, 인보크를 쉽게 하기 위해 만든 함수
+		anim.SetBool("isOpen", false);
+	}
+
     public void timeOutCloseCard()
     {
         if(gameManager.I.firstCard == gameObject)
@@ -75,4 +86,13 @@ public class card : MonoBehaviour
         if (IsInvoking("timeOutCloseCard"))
             CancelInvoke("timeOutCloseCard");
     }
+
+    void presentOneShot(float time)
+    {
+		// 게임 시작할 때 카드를 time만큼 보여주고 시작한다.
+		anim.SetBool("isOpen", true);
+		transform.Find("front").gameObject.SetActive(true);
+		transform.Find("back").gameObject.SetActive(false);
+		Invoke("closeCardOneShot", time);
+	}
 }

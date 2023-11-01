@@ -62,6 +62,7 @@ public class gameManager : MonoBehaviour
     public GameObject card;
     public GameObject cards;
     public GameObject matchFailTxt;
+    public GameObject comboTxt;
 
     public static gameManager I;
 
@@ -74,6 +75,7 @@ public class gameManager : MonoBehaviour
     float matchFailScore = 1f;
 	int tryCount = 0;
     int matchingCount = 0;
+    int comboCount = 0;
 
     // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
     // 차후에 스크립트(card.cs)에 변수를 할당하는 방식으로 고칠 수 있다.
@@ -189,6 +191,8 @@ public class gameManager : MonoBehaviour
             secondCard.GetComponent<card>().destroyCard();
             setMatchTxt(setTxt(firstCardImage));
             addGallery(firstCardImage);
+            comboCount++;
+            generateComboTxt(comboCount);
 			if (cardsLeft == 0)
             {
                 // 게임종료, endpanel 활성화 + 점수 계산
@@ -205,6 +209,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
+                comboCount = 0;
                 cathide();
                 audioSource.PlayOneShot(wrong);
                 generateFailTxt(matchFailScore);
@@ -449,5 +454,11 @@ public class gameManager : MonoBehaviour
         GameObject newTxt = Instantiate(matchFailTxt, GameObject.Find("Canvas").transform);
         newTxt.GetComponent<matchFailTxt>().setMyTxt(matchFailScore);
     }
+
+    void generateComboTxt(int comboCount)
+    {
+		GameObject newTxt = Instantiate(comboTxt, GameObject.Find("Canvas").transform);
+		newTxt.GetComponent<comboTxt>().setColor(comboCount);
+	}
 
 }
