@@ -44,6 +44,7 @@ public class minigame : MonoBehaviour
         {
                 if (coll.gameObject.tag == "arrow")
                 {
+                        knockBoackh();
                         transform.position = new Vector3(transform.position.x - 5f, transform.position.y, 0); //화살에 맞으면 뒤로 이동 시킴
                         MiniGameManager.I.health -= 6;
             
@@ -62,6 +63,11 @@ public class minigame : MonoBehaviour
         anim.SetBool("isDie", true);
         audioSource.PlayOneShot(DeadSound);
         Invoke("timeStop", 0.5f);
+    } 
+     public void knockBoackh()
+    {
+        anim.SetTrigger("hit");
+        audioSource.PlayOneShot(DeadSound);
     }
     void timeStop()
     {
