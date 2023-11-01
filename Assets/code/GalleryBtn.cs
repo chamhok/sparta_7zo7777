@@ -1,70 +1,120 @@
+using System;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GalleryBtn : MonoBehaviour
 {
-    public GalleryManager.WhoIs whoIs;
+    GalleryManager.WhoIs whoIs;
+    public enum Achives
+    {
+        UnlockFirst,
+        UnlockSecond,
+        UnlockThird,
+        UnlockFourth,
+        UnlockFifth,
+        UnlockSixth
+    }
+    public Achives achive; //업적이름 인스펙터에서 선택해주세요
+
+
+    Sprite[] myKey;
 
     AudioSource audioSource;
     GalleryManager galleryManager;
 
-    public GameObject blindObj;
+    public GameObject lockCard; // Lock 이미지
+    public GameObject unLockCard; // UnLock 이미지
 
-    Button btn;
+    Button btn; // 버튼 컴포넌트
 
     void Awake()
     {
         btn = GetComponent<Button>();
-        audioSource = GetComponent<AudioSource>();
-
-        galleryManager = FindObjectOfType<GalleryManager>();
     }
 
-
-    private void OnEnable() // 임시로 랜덤 획득중
+    void Start()
     {
-        int a = Random.Range(0, 2);
-        blindObj.SetActive((a == 0));
-        btn.interactable = !(a == 0);
-        // 이 버튼이 누구 버튼인지(int)whoIs, 그 사람의 카드를 획득했는지 플레이어프리프 이용해서 false에 넣기
+        galleryManager = FindObjectOfType<GalleryManager>();
+
+        if (PlayerPrefs.HasKey("MyData"))
+        {
+            Init();
+        }
+        else
+        {
+            lockCard.SetActive(false);
+            unLockCard.SetActive(true);
+            btn.interactable = false;
+        }
+    }
+
+    void Init()
+    {
+        switch (achive)
+        {
+            case Achives.UnlockFirst:
+                myKey = galleryManager.firstKey;
+                break;
+
+            case Achives.UnlockSecond:
+                myKey = galleryManager.secondKey;
+                break;
+
+            case Achives.UnlockThird:
+                myKey = galleryManager.thirdKey;
+                break;
+
+            case Achives.UnlockFourth:
+                myKey = galleryManager.fourthKey;
+                break;
+
+            case Achives.UnlockFifth:
+                myKey = galleryManager.fifthKey;
+                break;
+
+            case Achives.UnlockSixth:
+                myKey = galleryManager.sixthKey;
+                break;
+
+            default:
+                Debug.Log("버그입니다!");
+                break;
+        }
+
+        Set(achive);
+    }
+
+    void Set(Achives ach)
+    {
+        for (int i = 0; i < myKey.Length; i++)
+        {
+            if (!PlayerPrefs.HasKey(myKey[i].name)) // 플레이어프리프에 하나라도 안본 내사진이있다면 버튼 안열림
+            {
+                Debug.Log("버튼 닫힙니다");
+                unLockCard.SetActive(true);
+                lockCard.SetActive(false);
+                btn.interactable = false;
+                return;
+            }
+        }
+
+        unLockCard.SetActive(false);
+        lockCard.SetActive(true);
+        btn.interactable = true;
+
+        Debug.Log("버튼 해금됐습니다");
+
     }
 
     public void Click()
     {
+        Debug.Log("실행됨");
+
         if (audioSource != null)
             audioSource.Play();
 
-        galleryManager.PopupOpen((int)whoIs);
+        galleryManager.PopupOpen((int)achive);
     }
 }
-
-
-/*
- 
-
-/*
-     void UnlockCharacter()
-    {
-        for (int index = 0; index < lockCharacter.Length; index++)
-        {
-            string achiveName = achives[index].ToString();
-            bool isUnlock = PlayerPrefs.GetInt(achiveName, 0) == 1;
-            // isUnlock = 1 :true
-            lockCharacter[index].SetActive(!isUnlock);
-            unlockCharacter[index].SetActive(isUnlock);
-
-        }
-    }
-
-
-
-   void Init()
-    {
-        PlayerPrefs.SetInt("MyData", 1);
-
-        foreach (Achive achive in achives)
-        {
-            PlayerPrefs.SetInt(achive.ToString(), 1);
-            /* 잠금해제하고 싶은 경우 윗줄에서 0을 1로 바꾼 뒤 
-             * edit에서 Clear all PlayerPref를 눌러 초기화한 후 게임을 실행하면 잠금해제 
-             */
