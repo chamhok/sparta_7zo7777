@@ -46,29 +46,29 @@ public class MiniGameManager : MonoBehaviour
                 else
                 {
                         Time.timeScale = 0.0f;
-                        healthText.text = "Á×À½!!!";
+                        healthText.text = "ì£½ìŒ!!!";
                 }
                 
         }
-    /*IEnumerator CheckCharacterDeath()
+	/*IEnumerator CheckCharacterDeath()
     {
         while (true)
         {
-            // Ã¼·ÂÀÌ 0ÀÌÇÏÀÏ ¶§
+            // ì²´ë ¥ì´ 0ì´í•˜ì¼ ë•Œ
             if (health <= 0)
             {
                 isCharacterDead = true;
                 anim.SetTrigger("die");
-                yield return new WaitForSeconds(2); // 2ÃÊ ±â´Ù¸®±â
+                yield return new WaitForSeconds(2); // 2ì´ˆ ê¸°ë‹¤ë¦¬ê¸°
                 SceneManager.LoadScene("MainScene");
                 
             }
             
         }
-    }//Á×±â, Á×À»¶§ ¼Ò¸®³ª±â, ºÎÈ°ÇÏ±â 
+    }//ì£½ê¸°, ì£½ì„ë•Œ ì†Œë¦¬ë‚˜ê¸°, ë¶€í™œí•˜ê¸° 
     */
-    //È­»ìÀ» »ı¼º
-    void makeArrow()
+	//í™”ì‚´ì„ ìƒì„±
+	void makeArrow()
         {
                 Instantiate(arrow);
         }
