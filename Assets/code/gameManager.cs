@@ -202,6 +202,9 @@ public class gameManager : MonoBehaviour
 
 
             }
+            // PlayerPrefs에 GalleryCard 키로 리소스 이름 저장
+            PlayerPrefs.SetString("GalleryCard", firstCardImage);
+            PlayerPrefs.Save();
         }
         else
         {
