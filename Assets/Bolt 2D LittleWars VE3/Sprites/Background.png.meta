@@ -151,10 +151,10 @@ TextureImporter:
       name: Back 3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 159
         y: 143
-        width: 300
-        height: 60
+        width: 141
+        height: 59
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,12 +193,12 @@ TextureImporter:
       name: Back 0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 300
-        height: 60
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 177
+        y: 41
+        width: 123
+        height: 55
+      alignment: 9
+      pivot: {x: 0.51389456, y: 0.285611}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -214,10 +214,10 @@ TextureImporter:
       name: Back 2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 102
-        width: 300
-        height: 40
+        x: 19
+        y: 140
+        width: 137
+        height: 4
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
