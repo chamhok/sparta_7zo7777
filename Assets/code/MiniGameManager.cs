@@ -59,7 +59,7 @@ public class MiniGameManager : MonoBehaviour
                 }
                 
         }
-	void makeArrow()
+	    void makeArrow()
         {
                 Instantiate(arrow);
         }
@@ -68,7 +68,7 @@ public class MiniGameManager : MonoBehaviour
                 Time.timeScale = 0.0f;
                 scoreTxt.text = currentTime.ToString("N2");
                 retryBtn.SetActive(true);
-                /*
+                
                 if (PlayerPrefs.HasKey("bestScore") == false)
                 {
                         PlayerPrefs.SetFloat("bestScore", currentTime);
@@ -80,7 +80,6 @@ public class MiniGameManager : MonoBehaviour
                                 PlayerPrefs.SetFloat("bestScore", currentTime);
                         }
                 }
-                */
         }
 
 }
