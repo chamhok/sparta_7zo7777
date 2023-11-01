@@ -867,6 +867,7 @@ MonoBehaviour:
   defeat: {fileID: 8300000, guid: 8418c7c0cea770343a596611bc8f6cb2, type: 3}
   success: {fileID: 8300000, guid: 5db42d2a5292a3244beb834cae074a5e, type: 3}
   wrong: {fileID: 8300000, guid: 0c9010c3d42674f4093b70a00a91a33f, type: 3}
+  matchCat: {fileID: 8300000, guid: cf9e679e1df21794195b705aece1025b, type: 3}
   fastestTxt: {fileID: 264263929}
   currentScoreTxt: {fileID: 997760146}
   highScoreTxt: {fileID: 1030139322}
@@ -880,6 +881,7 @@ MonoBehaviour:
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   limitTime: 30
+  difficult: 0
 --- !u!4 &548532084
 Transform:
   m_ObjectHideFlags: 0

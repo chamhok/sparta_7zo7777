@@ -47,6 +47,7 @@ public class gameManager : MonoBehaviour
     public AudioClip defeat;
     public AudioClip success;
     public AudioClip wrong;
+    public AudioClip matchCat;
 
     public Text fastestTxt;
     public Text currentScoreTxt;
@@ -177,7 +178,10 @@ public class gameManager : MonoBehaviour
         if (firstCardImage == secondCardImage)
         {
             MachingCounting();
-            audioSource.PlayOneShot(match);
+            if (firstCard.transform.name == catName)
+                audioSource.PlayOneShot(matchCat);
+            else
+                audioSource.PlayOneShot(match);
             cardsLeft -= 2;
             firstCard.GetComponent<card>().destroyCard();
             secondCard.GetComponent<card>().destroyCard();
