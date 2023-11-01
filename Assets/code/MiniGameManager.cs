@@ -29,6 +29,7 @@ public class MiniGameManager : MonoBehaviour
 
         private void Awake()
         {
+                scoreTxt.text = "BestScore " + PlayerPrefs.GetFloat("bestScore").ToString("N2");
                 anim = GetComponent<Animator>();
                 Time.timeScale = 1.0f;
                 I = this;
@@ -66,18 +67,22 @@ public class MiniGameManager : MonoBehaviour
         public void gameOver()
         {
                 Time.timeScale = 0.0f;
-                scoreTxt.text = currentTime.ToString("N2");
+                
                 retryBtn.SetActive(true);
                 
                 if (PlayerPrefs.HasKey("bestScore") == false)
                 {
                         PlayerPrefs.SetFloat("bestScore", currentTime);
+                        scoreTxt.text = "BestScore " + PlayerPrefs.GetFloat("bestScore").ToString("N2");
+
                 }
                 else
                 {
                         if (PlayerPrefs.GetFloat("bestScore") < currentTime)
                         {
                                 PlayerPrefs.SetFloat("bestScore", currentTime);
+                                scoreTxt.text = "BestScore " + PlayerPrefs.GetFloat("bestScore").ToString("N2");
+
                         }
                 }
         }
