@@ -10,16 +10,20 @@ public class MiniGameManager : MonoBehaviour
         public GameObject arrow;
         public GameObject run;
         public Text healthText;
+        public Text timeTxt;
+        public float currentTime = 0.0f;
+
         public arrow Arrow;
         public static MiniGameManager I;
         public float health;
         public float maxHealth = 100;
-    public Animator anim;
+        public Animator anim;
     //bool isCharacterDead = false;
 
         // Start is called before the first frame update
         private void Awake()
         {
+                Time.timeScale = 1.0f;
                 I = this;
                 health = maxHealth;
                 InvokeRepeating("makeArrow", 0, 0.2f);
@@ -32,16 +36,18 @@ public class MiniGameManager : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
-            if (health > 0) 
-            { 
-                healthText.text = health.ToString(); 
-            }
+                currentTime += Time.deltaTime;
+                timeTxt.text = currentTime.ToString("N2");
 
-            else
-            {
-                healthText.text = "Á×À½!!!";
-                
-            }
+                if (health > 0) 
+                { 
+                healthText.text = health.ToString(); 
+                }
+                else
+                {
+                        Time.timeScale = 0.0f;
+                        healthText.text = "Á×À½!!!";
+                }
                 
         }
     /*IEnumerator CheckCharacterDeath()
