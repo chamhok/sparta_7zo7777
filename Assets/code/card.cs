@@ -32,9 +32,9 @@ public class card : MonoBehaviour
 		}
         else
         {
-            gameManager.I.secondCard = gameObject;
+			timeOutCheck();
+			gameManager.I.secondCard = gameObject;
             gameManager.I.isMatched();
-            timeOutCheck();
         }
     }
 
@@ -65,8 +65,9 @@ public class card : MonoBehaviour
 
     public void timeOutCloseCard()
     {
+        if(gameManager.I.firstCard == gameObject)
+		    gameManager.I.firstCard = null;
 		closeCardInvoke();
-		gameManager.I.firstCard = null;
 	}
 
     void timeOutCheck()
