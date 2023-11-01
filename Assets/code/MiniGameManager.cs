@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,30 +46,15 @@ public class MiniGameManager : MonoBehaviour
                 healthText.text = health.ToString(); 
                 }
                 else
-                {       
-                    healthText.text = "����!!!";
+
+                {
+                        Time.timeScale = 0.0f;
+                        healthText.text = "YOU DIED!!!";
                 }
                 
         }
-    /*IEnumerator CheckCharacterDeath()
-    {
-        while (true)
-        {
-            // 체력이 0이하일 때
-            if (health <= 0)
-            {
-                isCharacterDead = true;
-                anim.SetTrigger("die");
-                yield return new WaitForSeconds(2); // 2초 기다리기
-                SceneManager.LoadScene("MainScene");
-                
-            }
-            
-        }
-    }//죽기, 죽을때 소리나기, 부활하기 
-    */
-    //화살을 생성
-    void makeArrow()
+	//화살 쏘기
+	void makeArrow()
         {
                 Instantiate(arrow);
         }
