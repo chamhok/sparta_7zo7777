@@ -9,7 +9,7 @@ public class minigame : MonoBehaviour
         public float speed;
         float stendingPos;
         public Animator anim;
-       // WaitForFixedUpdate wait; ÀÛµ¿¾ÈµÊ
+       // WaitForFixedUpdate wait; ì‘ë™ì•ˆë¨
 
         void Start()
         {
@@ -25,10 +25,10 @@ public class minigame : MonoBehaviour
                 inputVec.x = Input.GetAxis("Horizontal");
                 inputVec.y = Input.GetAxis("Vertical");
         }
-        //¹Ì´Ï°ÔÀÓ ÇÃ·¹ÀÌ¾î¸¦ ÀÌµ¿½ÃÅ²´Ù.
+        //ë¯¸ë‹ˆê²Œì„ í”Œë ˆì´ì–´ë¥¼ ì´ë™ì‹œí‚¨ë‹¤.
         private void FixedUpdate()
         {
-              //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("hit")) return; ÀÛµ¿¾ÈµÊ 
+              //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("hit")) return; ì‘ë™ì•ˆë¨ 
                 float scale = Mathf.Abs(transform.position.y) / stendingPos;
                 transform.localScale = new Vector3(scale, scale, 1);
                 Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
@@ -38,12 +38,12 @@ public class minigame : MonoBehaviour
         {
                 if (coll.gameObject.tag == "arrow")
                 {
-                        transform.position = new Vector3(transform.position.x - 5f, transform.position.y, 0); //È­»ì¿¡ ¸ÂÀ¸¸é µÚ·Î ÀÌµ¿ ½ÃÅ´
-                       // StartCoroutine(knockBoack()); ÀÛµ¿¾ÈµÊ 
+                        transform.position = new Vector3(transform.position.x - 5f, transform.position.y, 0); //í™”ì‚´ì— ë§ìœ¼ë©´ ë’¤ë¡œ ì´ë™ ì‹œí‚´
+                       // StartCoroutine(knockBoack()); ì‘ë™ì•ˆë¨ 
                       //  anim.SetTrigger("hit");
                 }
         }
-        /* ÀÛµ¿¾ÈµÊ 
+        /* ì‘ë™ì•ˆë¨
         IEnumerator knockBoack()
         {
                 yield return wait;
