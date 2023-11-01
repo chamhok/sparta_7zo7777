@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GalleryManager : MonoBehaviour
 {
-    // Resources폴더 속 team 이미지를 배열에 넣어주세요. (순서상관없음)
+    // Resources폴더 속 team 이미지를 배열에 넣어주세요. (순서상관없음, 실수로 중복넣어도 가능!)
  
     public Sprite[] firstKey; //전은하
     public Sprite[] secondKey; // 황선범
@@ -18,8 +18,8 @@ public class GalleryManager : MonoBehaviour
 
 
     readonly string[] names = { "전은하", "황선범", "강건욱", "정용태", "박기혁", "냥이" };
-    public Sprite[] faces; // enum이름 순서대로 프사를 넣어주세요.
-    public string[] tmis; // enum이름 순서대로 설명을 적어주세요.
+    public Sprite[] faces; // 이름 순서대로 프사를 넣어주세요.
+    public string[] tmis; // 이름 순서대로 설명을 적어주세요.
 
     public Text nameTxt;
     public Image faceImg;

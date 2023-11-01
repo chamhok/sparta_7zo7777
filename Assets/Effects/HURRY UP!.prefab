@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8379141039441717577}
   - component: {fileID: 8900603872085319777}
+  - component: {fileID: 875279343735775579}
   m_Layer: 0
   m_Name: HURRY UP!
   m_TagString: Untagged
@@ -86,6 +87,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &875279343735775579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573339722932020082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d2d197420e19740a19e90e4a43ab14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 10
 --- !u!1 &4856813318944668863
 GameObject:
   m_ObjectHideFlags: 0

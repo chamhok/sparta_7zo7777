@@ -26,6 +26,7 @@ public class GalleryBtn : MonoBehaviour
     void Awake()
     {
         btn = GetComponent<Button>();
+        myKey = new Sprite[1];
     }
 
     void Start()
@@ -36,7 +37,6 @@ public class GalleryBtn : MonoBehaviour
 
         Init();
         Set();
-
     }
 
     void Init()
