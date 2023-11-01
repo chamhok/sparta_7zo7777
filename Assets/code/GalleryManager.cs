@@ -35,6 +35,7 @@ public class GalleryManager : MonoBehaviour
 
     void Awake()
     {
+
         profile = new Dictionary<int, ProfileSetting>();
 
         for (int i = 0; i < Enum.GetValues(typeof(WhoIs)).Length; i++)

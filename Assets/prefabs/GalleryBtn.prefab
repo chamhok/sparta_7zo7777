@@ -245,8 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achive: 0
-  lockCard: {fileID: 5047658075224367356}
-  unLockCard: {fileID: 2366083135392441123}
+  lockCard: {fileID: 2366083135392441123}
 --- !u!1 &2366083135392441123
 GameObject:
   m_ObjectHideFlags: 0
