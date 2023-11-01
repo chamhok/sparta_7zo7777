@@ -39,6 +39,8 @@ public class minigame : MonoBehaviour
                 if (coll.gameObject.tag == "arrow")
                 {
                         transform.position = new Vector3(transform.position.x - 5f, transform.position.y, 0); //화살에 맞으면 뒤로 이동 시킴
+                        MiniGameManager.I.health -= 20;
+                        Debug.Log(MiniGameManager.I.health);
                        // StartCoroutine(knockBoack()); 작동안됨 
                       //  anim.SetTrigger("hit");
                 }
