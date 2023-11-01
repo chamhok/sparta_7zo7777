@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,15 +48,15 @@ public class difficultBtn : MonoBehaviour
 
         if (difficulty == 0)
         {
-            difficultTxt.text = "½¬¿ò";
+            difficultTxt.text = "ì‰¬ì›€";
         }
         else if (difficulty == 1)
         {
-            difficultTxt.text = "º¸Åë";
+            difficultTxt.text = "ë³´í†µ";
         }
         else if (difficulty == 2)
         {
-            difficultTxt.text = "¾î·Á¿ò";
+            difficultTxt.text = "ì–´ë ¤ì›€";
         }
         GameObject.Find("difficultysend").GetComponent<difficultysend>().difficult = difficulty;
     }

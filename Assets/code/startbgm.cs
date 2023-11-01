@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ public class startbgm : MonoBehaviour
     void Start()
     {
         audioSource.clip = startBgm;
-        audioSource.Play();//bgm ¿Áª˝
+        audioSource.Play();//bgm Ïû¨ÏÉù
     }
 
     // Update is called once per frame
