@@ -40,11 +40,11 @@ public class minigame : MonoBehaviour
                 if (coll.gameObject.tag == "arrow")
                 {
                         transform.position = new Vector3(transform.position.x - 10f, transform.position.y, 0);
-                       // StartCoroutine(knockBoack()); ÀÛµ¿¾ÈµÊ 
+                       // StartCoroutine(knockBoack()); ì‘ë™ì•ˆë¨
                       //  anim.SetTrigger("hit");
                 }
         }
-        /* ÀÛµ¿¾ÈµÊ 
+        /* ì‘ë™ì•ˆë¨
         IEnumerator knockBoack()
         {
                 yield return wait;
