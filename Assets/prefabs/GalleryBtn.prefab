@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07cc578a4304294fa51e4eb515c67bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   achive: 0
   firstKey: []
   secondKey: []
@@ -253,6 +254,14 @@ MonoBehaviour:
   sixthKey: []
   lockCard: {fileID: 2366083135392441123}
   unLockCard: {fileID: 5047658075224367356}
+=======
+  LockCard:
+  - {fileID: 0}
+  UnLockCard:
+  - {fileID: 0}
+  BtnNumber: 0
+  FirstCardImage: 
+>>>>>>> 67aed5e26b0be7462d6c0cfec259105ff04b5d53
 --- !u!1 &2366083135392441123
 GameObject:
   m_ObjectHideFlags: 0
