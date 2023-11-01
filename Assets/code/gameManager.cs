@@ -33,14 +33,22 @@ class MyImage
     {
         return this.isCat;
     }
-	public void SetIsCat(bool isCat)
-	{
-		this.isCat = isCat;
-	}
+    public void SetIsCat(bool isCat)
+    {
+        this.isCat = isCat;
+    }
 }
 
 public class gameManager : MonoBehaviour
 {
+
+    public GameObject effect_NewCard;
+    public Transform pos_NewCard;
+    public GameObject effect_HurryUp;
+    public Transform pos_HurryUp;
+
+
+
     public AudioSource audioSource;
     public AudioClip match;
     public AudioClip bgmusic;
@@ -73,7 +81,7 @@ public class gameManager : MonoBehaviour
     public int difficult = 0;
     float currentTime = 0.0f;
     float matchFailScore = 1f;
-	int tryCount = 0;
+    int tryCount = 0;
     int matchingCount = 0;
     int comboCount = 0;
 
@@ -83,10 +91,10 @@ public class gameManager : MonoBehaviour
 
     int cardStocks = 0;
     int cardsLeft = 0;
-	List<int> catList = new List<int>();
+    List<int> catList = new List<int>();
     string catName;
 
-	bool isEnd = false;
+    bool isEnd = false;
     bool isHurry = false;
     bool[] check = new bool[0];
     Animator timeTxtAnim;
@@ -106,26 +114,26 @@ public class gameManager : MonoBehaviour
         currentTime = limitTime;
         isEnd = false;
         isHurry = false;
-        cardStocks = 4*(3+difficult);
+        cardStocks = 4 * (3 + difficult);
         // 자리가 남아있는지 확인하는 변수
         cardsLeft = cardStocks;
         check = new bool[cardStocks];
 
-		for (int i = 0; i < cardStocks; i++)
-		{
-			check[i] = false;
-		}
-		Time.timeScale = 1.0f;
+        for (int i = 0; i < cardStocks; i++)
+        {
+            check[i] = false;
+        }
+        Time.timeScale = 1.0f;
 
         audioSource.clip = bgmusic;
         audioSource.Play();//bgm 재생
         setImages();
-		generateCard(chooseCat());
+        generateCard(chooseCat());
         separteCats();
-		shuffleImages(images);
+        shuffleImages(images);
 
         // 카드갯수/2 - 1만큼 반복한다.
-        for (int i = 0; i < (cardStocks/2 - 1); i++)
+        for (int i = 0; i < (cardStocks / 2 - 1); i++)
         {
             generateCard(i);
         }
@@ -140,7 +148,7 @@ public class gameManager : MonoBehaviour
 
         currentTime -= Time.deltaTime;
         timeTxt.text = currentTime.ToString("N2");
-                
+
         //제한시간이 지나면 게임 종료
         if (currentTime <= 0)
         {
@@ -156,17 +164,18 @@ public class gameManager : MonoBehaviour
         {
             isHurry = true;
             timeTxtAnim.SetTrigger("isHurryUp");
+            generateEffect_HurryUp(); //빨리하라는 이펙트 띄움
         }
     }
-    
+
 
     // 카드의 뒤집는 횟수를 센다.
     private void tryCounting()
     {
         tryCount++;
         tryTxt.text = tryCount + "번 시도함!";
-     }
-        
+    }
+
     // 카드의 매칭 횟수를 센다.
     private void MachingCounting()
     {
@@ -193,11 +202,11 @@ public class gameManager : MonoBehaviour
             addGallery(firstCardImage);
             comboCount++;
             generateComboTxt(comboCount);
-			if (cardsLeft == 0)
+            if (cardsLeft == 0)
             {
                 // 게임종료, endpanel 활성화 + 점수 계산
                 gameEnd(true);
-                
+
                 audioSource.clip = bgmusic;
                 audioSource.Pause();
                 audioSource.clip = success;
@@ -209,14 +218,14 @@ public class gameManager : MonoBehaviour
         }
         else
         {
-                comboCount = 0;
-                cathide();
-                audioSource.PlayOneShot(wrong);
-                generateFailTxt(matchFailScore);
-                currentTime -= matchFailScore;
-                setMatchTxt("꽝!!!");
-                firstCard.GetComponent<card>().closeCard();
-                secondCard.GetComponent<card>().closeCard();
+            comboCount = 0;
+            cathide();
+            audioSource.PlayOneShot(wrong);
+            generateFailTxt(matchFailScore);
+            currentTime -= matchFailScore;
+            setMatchTxt("꽝!!!");
+            firstCard.GetComponent<card>().closeCard();
+            secondCard.GetComponent<card>().closeCard();
         }
         if (IsInvoking("clearMatchTxt")) CancelInvoke("clearMatchTxt");
         Invoke("clearMatchTxt", 0.5f);
@@ -228,19 +237,19 @@ public class gameManager : MonoBehaviour
     private void cathide()
     {
         if (catName == firstCard.transform.name)
-		{
-            int rand = Random.Range(0,cards.transform.childCount-1);
-			Vector3 tempPosition = firstCard.transform.position;
-			firstCard.transform.position = cards.transform.GetChild(rand).position;
-			cards.transform.GetChild(rand).position = tempPosition;
-		}
+        {
+            int rand = Random.Range(0, cards.transform.childCount - 1);
+            Vector3 tempPosition = firstCard.transform.position;
+            firstCard.transform.position = cards.transform.GetChild(rand).position;
+            cards.transform.GetChild(rand).position = tempPosition;
+        }
     }
 
     string setTxt(string name)
     {
-        for(int i=0;i< images.Length; i++)
+        for (int i = 0; i < images.Length; i++)
         {
-            if(name == images[i].GetResourceName())
+            if (name == images[i].GetResourceName())
             {
                 return images[i].GetName();
             }
@@ -255,16 +264,16 @@ public class gameManager : MonoBehaviour
 
     void clearMatchTxt()
     {
-        matchTxt.text ="";
+        matchTxt.text = "";
     }
 
     void separteCats()
     {
-		int tempLimit = images.Length - 1 - catList.Count;
-		int count = images.Length - 1;
+        int tempLimit = images.Length - 1 - catList.Count;
+        int count = images.Length - 1;
 
-		for (int i = 0; i < tempLimit; i++)
-		{
+        for (int i = 0; i < tempLimit; i++)
+        {
             while (images[count].GetIsCat()) count--;
             if (images[i].GetIsCat())
             {
@@ -273,13 +282,13 @@ public class gameManager : MonoBehaviour
                 images[i] = images[count];
                 images[count] = temp;
             }
-		}
-	}
+        }
+    }
 
     // class의 배열을 랜덤하게 섞는 함수(인터넷에서 봄)
     MyImage[] shuffleImages(MyImage[] list)
     {
-        int random1,  random2;
+        int random1, random2;
         MyImage temp;
 
         for (int i = 0; i < list.Length - catList.Count; ++i)
@@ -301,7 +310,7 @@ public class gameManager : MonoBehaviour
         // resource의 파일명은 setResourceName에, 사진 주인공은 setName
 
         // 해당 for문의 조건문은 수동으로 바꿔야 함 (개선 필요!)
-        for(int i=0; i< 20; i++)
+        for (int i = 0; i < 20; i++)
         {
             images[i] = new MyImage();
             images[i].SetResourceName("team" + i.ToString());
@@ -313,52 +322,52 @@ public class gameManager : MonoBehaviour
         images[3].SetName("정용태");
         images[4].SetName("강건욱");
         images[5].SetName("군침냥");
-		images[5].SetIsCat(true);
+        images[5].SetIsCat(true);
         images[6].SetName("소파냥");
-		images[6].SetIsCat(true);
+        images[6].SetIsCat(true);
         images[7].SetName("팝 캣");
-		images[7].SetIsCat(true);
-		images[8].SetName("전은하");
-		images[9].SetName("박기혁");
-		images[10].SetName("전은하");
-		images[11].SetName("강건욱");
-		images[12].SetName("강건욱");
-		images[13].SetName("황선범");
-		images[14].SetName("세븐");
-		images[15].SetName("정용태");
-		images[16].SetName("박기혁");
-		images[17].SetName("세븐");
-		images[18].SetName("박기혁");
-		images[19].SetName("고양이");
+        images[7].SetIsCat(true);
+        images[8].SetName("전은하");
+        images[9].SetName("박기혁");
+        images[10].SetName("전은하");
+        images[11].SetName("강건욱");
+        images[12].SetName("강건욱");
+        images[13].SetName("황선범");
+        images[14].SetName("세븐");
+        images[15].SetName("정용태");
+        images[16].SetName("박기혁");
+        images[17].SetName("세븐");
+        images[18].SetName("박기혁");
+        images[19].SetName("고양이");
         images[19].SetIsCat(true);
-	}
+    }
     void gameEnd(bool success)
     {
-		endPanel.SetActive(true);
-		Time.timeScale = 0.0f;
+        endPanel.SetActive(true);
+        Time.timeScale = 0.0f;
         // 몇 초 안에 깼는지
         float clearTime = limitTime - currentTime; // 남은시간
         float timeScore = currentTime;
-        if(success) // 게임 승리!
+        if (success) // 게임 승리!
         {
-			if (PlayerPrefs.HasKey("fastest"))
-			{
-				if (PlayerPrefs.GetFloat("fastest") <= clearTime)
-				{
-					PlayerPrefs.SetFloat("fastest", clearTime);
-					fastestTxt.text = clearTime.ToString("N2");
-				}
-				else
-				{
-					fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
-				}
-			}
-			else // 키가 없으면
-			{
-				PlayerPrefs.SetFloat("fastest", clearTime);
-				fastestTxt.text = clearTime.ToString("N2");
-			}
-		}
+            if (PlayerPrefs.HasKey("fastest"))
+            {
+                if (PlayerPrefs.GetFloat("fastest") <= clearTime)
+                {
+                    PlayerPrefs.SetFloat("fastest", clearTime);
+                    fastestTxt.text = clearTime.ToString("N2");
+                }
+                else
+                {
+                    fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
+                }
+            }
+            else // 키가 없으면
+            {
+                PlayerPrefs.SetFloat("fastest", clearTime);
+                fastestTxt.text = clearTime.ToString("N2");
+            }
+        }
         else // 게임 패배
         {
             if (PlayerPrefs.HasKey("fastest"))
@@ -369,18 +378,18 @@ public class gameManager : MonoBehaviour
             {
                 fastestTxt.text = "0.00";
             }
-		}
+        }
 
         // 이번 판 점수 설정
         float currentScore = 0f;
-        if(success) currentScore = 50f + timeScore - (float)tryCount / 2;
-        if(currentScore < 0) currentScore = 0;
-		currentScoreTxt.text = currentScore.ToString("N2");
+        if (success) currentScore = 50f + timeScore - (float)tryCount / 2;
+        if (currentScore < 0) currentScore = 0;
+        currentScoreTxt.text = currentScore.ToString("N2");
 
         // 최고점 설정 <- 최단속도랑 똑같은데 key만 다름
-        if(PlayerPrefs.HasKey("maxScore"))
+        if (PlayerPrefs.HasKey("maxScore"))
         {
-            if(PlayerPrefs.GetFloat("maxScore") <= currentScore)
+            if (PlayerPrefs.GetFloat("maxScore") <= currentScore)
             {
                 PlayerPrefs.SetFloat("maxScore", currentScore);
                 highScoreTxt.text = currentScore.ToString("N2");
@@ -398,56 +407,57 @@ public class gameManager : MonoBehaviour
 
     }
 
-	int chooseCat()
-	{
-		// 사진에서 고양이만 찾은 다음 거기에서 하나 선택 -> 숫자 return
-		for (int i = 0; i < images.Length; i++)
-		{
-			if (images[i].GetIsCat()) catList.Add(i);
-		}
+    int chooseCat()
+    {
+        // 사진에서 고양이만 찾은 다음 거기에서 하나 선택 -> 숫자 return
+        for (int i = 0; i < images.Length; i++)
+        {
+            if (images[i].GetIsCat()) catList.Add(i);
+        }
         int temp = Random.Range(0, catList.Count);
         catName = images[catList[temp]].GetName();
-		return catList[temp];
-	}
+        return catList[temp];
+    }
 
     void generateCard(int i)
     {
-		int doubleCheck = 0;
-		while (true)
-		{
-			int rand = Random.Range(0, cardStocks);
-			if (check[rand] == false)
-			{
-				check[rand] = true;
-				GameObject newCard = Instantiate(card);
-				newCard.transform.parent = GameObject.Find("cards").transform;
-				float x = (rand % 4) * 1.4f - 2.1f;
+        int doubleCheck = 0;
+        while (true)
+        {
+            int rand = Random.Range(0, cardStocks);
+            if (check[rand] == false)
+            {
+                check[rand] = true;
+                GameObject newCard = Instantiate(card);
+                newCard.transform.parent = GameObject.Find("cards").transform;
+                float x = (rand % 4) * 1.4f - 2.1f;
                 float y = -(rand / 4) * 1.4f + (0.8f + 0.4f * difficult);
-				newCard.transform.position = new Vector3(x, y, 0);
-				newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i].GetResourceName());
-				newCard.transform.name = images[i].GetName(); // 카드에게 각각 이름을 부여
-				doubleCheck++;
-			}
-			if (doubleCheck >= 2)
-			{
-				doubleCheck = 0;
-				break;
-			}
-		}
-	}
+                newCard.transform.position = new Vector3(x, y, 0);
+                newCard.transform.Find("front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(images[i].GetResourceName());
+                newCard.transform.name = images[i].GetName(); // 카드에게 각각 이름을 부여
+                doubleCheck++;
+            }
+            if (doubleCheck >= 2)
+            {
+                doubleCheck = 0;
+                break;
+            }
+        }
+    }
 
     void addGallery(string resourceName)
     {
-		// playerprefs에 리소스명을 저장 -> gallery Scene에서 이용할 수 있도록
-        if(PlayerPrefs.HasKey(resourceName))
+        // playerprefs에 리소스명을 저장 -> gallery Scene에서 이용할 수 있도록
+        if (PlayerPrefs.HasKey(resourceName))
         {
             return;
         }
         else
         {
+            generateEffect_NewCard(); // 새 카드 얻었다는 이펙트뜸
             PlayerPrefs.SetInt(resourceName, 1);
         }
-	}
+    }
 
     void generateFailTxt(float matchFailScore)
     {
@@ -457,8 +467,19 @@ public class gameManager : MonoBehaviour
 
     void generateComboTxt(int comboCount)
     {
-		GameObject newTxt = Instantiate(comboTxt, GameObject.Find("Canvas").transform);
-		newTxt.GetComponent<comboTxt>().setColor(comboCount);
-	}
+        GameObject newTxt = Instantiate(comboTxt, GameObject.Find("Canvas").transform);
+        newTxt.GetComponent<comboTxt>().setColor(comboCount);
+    }
+
+    void generateEffect_NewCard()
+    {
+        Instantiate(effect_NewCard, pos_NewCard.position, Quaternion.identity);
+    }
+
+    void generateEffect_HurryUp()
+    {
+        Instantiate(effect_HurryUp, pos_HurryUp.position, Quaternion.identity);
+    }
+
 
 }

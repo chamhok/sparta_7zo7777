@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class card : MonoBehaviour
 {
+    public GameObject effect_Bang;
+
     public AudioClip flip;
     public AudioSource audioSource;
 
@@ -45,6 +47,7 @@ public class card : MonoBehaviour
 
     public void destroyCard()
     {
+        Instantiate(effect_Bang, this.transform.position, Quaternion.identity); // 펑 이펙트소환
         Invoke("destroyCardInvoke", 0.5f);
     }
 

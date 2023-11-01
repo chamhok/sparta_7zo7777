@@ -476,6 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bedea4f208b1554fa1674e6c35aceb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect_Bang: {fileID: 2910264003082726257, guid: 6d5bf04420414764b87e56f8c37a184a, type: 3}
   flip: {fileID: 8300000, guid: 2d7683bea61c9a046ae49e77a1627ed2, type: 3}
   audioSource: {fileID: 7521336689405019447}
 --- !u!82 &7521336689405019447
