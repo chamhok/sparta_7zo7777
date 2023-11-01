@@ -279,6 +279,7 @@ public class gameManager : MonoBehaviour
 
         for (int i = 0; i < list.Length - catList.Count; ++i)
         {
+            // 맨 뒤에 고양이가 들어있는 배열들은 제외
             random1 = Random.Range(0, list.Length - catList.Count);
             random2 = Random.Range(0, list.Length - catList.Count);
 

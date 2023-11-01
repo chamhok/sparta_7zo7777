@@ -28,35 +28,50 @@ public class card : MonoBehaviour
         if (gameManager.I.firstCard == null)
         {
             gameManager.I.firstCard = gameObject;
-        }
+			Invoke("timeOutCloseCard", 5.0f);
+		}
         else
         {
             gameManager.I.secondCard = gameObject;
             gameManager.I.isMatched();
+            timeOutCheck();
         }
     }
+
     public void destroyCard()
-        {
-                Invoke("destroyCardInvoke", 0.5f);
-        }
+    {
+        Invoke("destroyCardInvoke", 0.5f);
+    }
 
-        void destroyCardInvoke()
-        {
-                Destroy(gameObject);
-        }
+    void destroyCardInvoke()
+    {
+        Destroy(gameObject);
+    }
 
-        public void closeCard()
-        {
-                Invoke("closeCardInvoke", 0.5f);
-        }
+    public void closeCard()
+    {
+        Invoke("closeCardInvoke", 0.5f);
+    }
 
-        void closeCardInvoke()
+    void closeCardInvoke()
+    {
+        anim.SetBool("isOpen", false);
+        if (!opencheck)
         {
-               anim.SetBool("isOpen", false);
-            if (!opencheck)
-            {
-                transform.Find("back").GetComponent<SpriteRenderer>().color = new Color(0.7058824f, 0.7058824f, 0.7058824f, 1f);
-                opencheck = true;
-            }
+            transform.Find("back").GetComponent<SpriteRenderer>().color = new Color(0.7058824f, 0.7058824f, 0.7058824f, 1f);
+            opencheck = true;
+        }
+    }
+
+    public void timeOutCloseCard()
+    {
+		closeCardInvoke();
+		gameManager.I.firstCard = null;
+	}
+
+    void timeOutCheck()
+    {
+        if (IsInvoking("timeOutCloseCard"))
+            CancelInvoke("timeOutCloseCard");
     }
 }
