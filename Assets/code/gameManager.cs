@@ -71,7 +71,7 @@ public class gameManager : MonoBehaviour
     public float limitTime = 5.0f;
     public int difficult = 0;
     float currentTime = 0.0f;
-    float matchFailScore = 1.0f;
+    float matchFailScore = 1f;
 	int tryCount = 0;
     int matchingCount = 0;
 
