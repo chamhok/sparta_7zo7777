@@ -15,6 +15,14 @@ public class GalleryManager : MonoBehaviour
         냥이
     }
 
+    public Sprite[] firstKey; //전은하 버튼사진 
+    public Sprite[] secondKey; // 황선범 버튼사진
+    public Sprite[] thirdKey; // 강건욱
+    public Sprite[] fourthKey; // 정용태
+    public Sprite[] fifthKey; // 박기혁
+    public Sprite[] sixthKey; //냥이
+
+
     public Sprite[] faces; // enum의 순서대로 프사를 넣어주세요.
     public string[] tmis; // enum의 순서대로 설명을 적어주세요.
 

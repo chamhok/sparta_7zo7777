@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1608781584807338168}
   m_Layer: 5
   m_Name: GalleryBtn
-  m_TagString: Untagged
+  m_TagString: GalleryBtn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,8 +244,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07cc578a4304294fa51e4eb515c67bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whoIs: 0
-  blindObj: {fileID: 2366083135392441123}
+  achive: 0
+  firstKey: []
+  secondKey: []
+  thirdKey: []
+  fourthKey: []
+  fifthKey: []
+  sixthKey: []
+  lockCard: {fileID: 2366083135392441123}
+  unLockCard: {fileID: 5047658075224367356}
 --- !u!1 &2366083135392441123
 GameObject:
   m_ObjectHideFlags: 0
