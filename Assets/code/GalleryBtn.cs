@@ -57,6 +57,9 @@ public class GalleryBtn : MonoBehaviour
     }
     void Start()
     {
+        string myResourceName = gameObject.transform.Find("unlocked").GetComponent<Image>().sprite.name;
+        Debug.Log(myResourceName);
+        Debug.Log(PlayerPrefs.HasKey(myResourceName));
         UnlockCharacter();
     }
 
@@ -84,8 +87,9 @@ public class GalleryBtn : MonoBehaviour
 
         galleryManager.PopupOpen(whoIsIndex);
     }
-
-    void LateUpdate()
+}
+    
+    /*void LateUpdate()
     {
         foreach (Achive achive in achives)
         {
@@ -98,7 +102,7 @@ public class GalleryBtn : MonoBehaviour
         GameObject[] LockCardImage;
         FirstCardImage = PlayerPrefs.GetString("Canvas/Scroll view/Viewpoint/Content/Gallery");
         LockCardImage = GameObject.FindGameObjectsWithTag("GalleryBtn");
-
+        
         switch (achive)
         {
             case Achive.UnlockFirst:
@@ -122,7 +126,7 @@ public class GalleryBtn : MonoBehaviour
                         isAchive = true;
                         break;
                     }
-                }
+                }                
                 break;
 
             case Achive.UnlockThird:
@@ -134,7 +138,7 @@ public class GalleryBtn : MonoBehaviour
                         isAchive = true;
                         break;
                     }
-                }
+                }                
                 break;
 
             case Achive.UnlockFourth:
@@ -146,7 +150,7 @@ public class GalleryBtn : MonoBehaviour
                         isAchive = true;
                         break;
                     }
-                }
+                }                                
                 break;
 
             case Achive.UnlockFifth:
@@ -158,7 +162,7 @@ public class GalleryBtn : MonoBehaviour
                         isAchive = true;
                         break;
                     }
-                }
+                }                
                 break;
 
             case Achive.UnlockSixth:
@@ -170,13 +174,13 @@ public class GalleryBtn : MonoBehaviour
                         isAchive = true;
                         break;
                     }
-                }
+                }                
                 break;
-
+                
         }
         if (isAchive && PlayerPrefs.GetInt(achive.ToString()) == 0)
         {
             PlayerPrefs.SetInt(achive.ToString(), 1);
         }
     }
-}
+*/

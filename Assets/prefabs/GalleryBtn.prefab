@@ -244,8 +244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07cc578a4304294fa51e4eb515c67bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whoIs: 0
-  blindObj: {fileID: 2366083135392441123}
+  LockCard:
+  - {fileID: 0}
+  UnLockCard:
+  - {fileID: 0}
+  BtnNumber: 0
+  FirstCardImage: 
 --- !u!1 &2366083135392441123
 GameObject:
   m_ObjectHideFlags: 0
