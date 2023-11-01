@@ -379,7 +379,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1287394793920189147, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: m_Name
-      value: GalleryBtn (2)
+      value: GalleryBtn 2
       objectReference: {fileID: 0}
     - target: {fileID: 1608781584807338168, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: whoIs
@@ -1709,7 +1709,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1287394793920189147, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: m_Name
-      value: GalleryBtn (3)
+      value: GalleryBtn 3
       objectReference: {fileID: 0}
     - target: {fileID: 1608781584807338168, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: whoIs
@@ -1847,7 +1847,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1287394793920189147, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: m_Name
-      value: GalleryBtn (5)
+      value: GalleryBtn 5
       objectReference: {fileID: 0}
     - target: {fileID: 1608781584807338168, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: whoIs
@@ -2156,7 +2156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1287394793920189147, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: m_Name
-      value: GalleryBtn (1)
+      value: GalleryBtn 1
       objectReference: {fileID: 0}
     - target: {fileID: 1608781584807338168, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: whoIs
@@ -2303,7 +2303,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1287394793920189147, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: m_Name
-      value: GalleryBtn (4)
+      value: GalleryBtn 4
       objectReference: {fileID: 0}
     - target: {fileID: 1608781584807338168, guid: 02f5aa66d779d83468b9d1928cf87e15, type: 3}
       propertyPath: whoIs

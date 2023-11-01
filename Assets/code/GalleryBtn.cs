@@ -1,5 +1,7 @@
 using System;
+using System.Reflection;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static GalleryManager;
@@ -20,10 +22,14 @@ public class GalleryBtn : MonoBehaviour
     AudioSource audioSource;
     GalleryManager galleryManager;
 
-    public GameObject LockCard; // Lock 이미지
-    public GameObject UnLockCard; // UnLock 이미지
+    public GameObject[] LockCard; // Lock 이미지
+    public GameObject[] UnLockCard; // UnLock 이미지
+    public int BtnNumber = 0;
+    public string FirstCardImage;
 
     Button btn; // 버튼 컴포넌트
+    enum Achive { UnlockFirst, UnlockSecond, UnlockThird, UnlockFourth, UnlockFifth, UnlockSixth }
+    Achive[] achives;
 
     void Awake()
     {
@@ -31,51 +37,147 @@ public class GalleryBtn : MonoBehaviour
        
 
         galleryManager = FindObjectOfType<GalleryManager>();
-        whoIs = (WhoIs[])Enum.GetValues(typeof(WhoIs));
+        achives = (Achive[])Enum.GetValues(typeof(Achive));
 
-        if (!PlayerPrefs.HasKey("MyData"))
+        if (!PlayerPrefs.HasKey("MyData")) //HasKey함수로 데이터 유무 체크 후 초기화 실행
+        {
             Init();
+        }
+        
     }
 
     void Init()
     {
         PlayerPrefs.SetInt("MyData", 1);
 
-        foreach (WhoIs card in whoIs)
+        foreach (Achive achive in achives)
         {
-            PlayerPrefs.SetInt(card.ToString() + "IsGet", 0);
+            PlayerPrefs.SetInt(achive.ToString(), 0);
         }
     }
-
-    private void OnEnable()
+    void Start()
     {
-        int isCardGet = PlayerPrefs.GetInt(gameObject.name + "IsGet", 0);
+        UnlockCharacter();
+    }
 
-        if (isCardGet != 0)
-        {
-            btn.interactable = true; // 버튼을 상호 작용 가능하게 설정
-            LockCard.SetActive(false); // Lock 이미지를 비활성화
-            UnLockCard.SetActive(true); // UnLock 이미지를 활성화
-        }
-        else
-        {
-            btn.interactable = false; // 버튼을 상호 작용 불가능하게 설정
-            LockCard.SetActive(true); // Lock 이미지를 활성화
-            UnLockCard.SetActive(false); // UnLock 이미지를 비활성화
+    void UnlockCharacter()
+    {
+        for( int index = 0; index < LockCard.Length; index++)
+     //잠금 버튼 배열을 순회하면서 인덱스에 해당하는 업적 이름 가져오기
+    {
+            string achiveName = achives[index].ToString();
+            bool isUnlock = PlayerPrefs.GetInt(achiveName) == 1;
+            //GetInt함수로 저장된 업적 상태를 가져와서 버튼 활성화에 적용
+            LockCard[index].SetActive(!isUnlock); //부정이기 때문에 !사용
+            UnLockCard[index].SetActive(isUnlock);
         }
     }
 
+   
+    
     public void Click()
     {
         if (audioSource != null)
             audioSource.Play();
-
+        
         int whoIsIndex = Array.IndexOf(whoIs, (WhoIs)Enum.Parse(typeof(WhoIs), gameObject.name));
-
+        
         galleryManager.PopupOpen(whoIsIndex);
+    }
+    
+    void LateUpdate()
+    {
+        foreach (Achive achive in achives)
+        {
+            CheckAchive(achive);
+        }
+    }
+    void CheckAchive(Achive achive)
+    {
+        bool isAchive = false;
+        GameObject[] LockCardImage;
+        FirstCardImage = PlayerPrefs.GetString("Canvas/Scroll view/Viewpoint/Content/Gallery");
+        LockCardImage = GameObject.FindGameObjectsWithTag("GalleryBtn");
+        
+        switch (achive)
+        {
+            case Achive.UnlockFirst:
+                isAchive = false; // 초기화
+                foreach (GameObject cardImage in LockCardImage)
+                {
+                    if (cardImage.name == FirstCardImage)
+                    {
+                        isAchive = true;
+                        break;
+                    }
+                }                
+                break;
 
-        PlayerPrefs.SetInt(gameObject.name + "IsGet", 1);
-        PlayerPrefs.Save();
+            case Achive.UnlockSecond:
+                isAchive = false; // 초기화
+                foreach (GameObject cardImage in LockCardImage)
+                {
+                    if (cardImage.name == "황선범")
+                    {
+                        isAchive = true;
+                        break;
+                    }
+                }                
+                break;
+
+            case Achive.UnlockThird:
+                isAchive = false; // 초기화
+                foreach (GameObject cardImage in LockCardImage)
+                {
+                    if (cardImage.name == "강건욱")
+                    {
+                        isAchive = true;
+                        break;
+                    }
+                }                
+                break;
+
+            case Achive.UnlockFourth:
+                isAchive = false; // 초기화
+                foreach (GameObject cardImage in LockCardImage)
+                {
+                    if (cardImage.name == "정용태")
+                    {
+                        isAchive = true;
+                        break;
+                    }
+                }                                
+                break;
+
+            case Achive.UnlockFifth:
+                isAchive = false; // 초기화
+                foreach (GameObject cardImage in LockCardImage)
+                {
+                    if (cardImage.name == "박기혁")
+                    {
+                        isAchive = true;
+                        break;
+                    }
+                }                
+                break;
+
+            case Achive.UnlockSixth:
+                isAchive = false; // 초기화
+                foreach (GameObject cardImage in LockCardImage)
+                {
+                    if (cardImage.name == "군침냥")
+                    {
+                        isAchive = true;
+                        break;
+                    }
+                }                
+                break;
+                
+        }
+        if (isAchive && PlayerPrefs.GetInt(achive.ToString()) == 0)
+        {
+            PlayerPrefs.SetInt(achive.ToString(), 1);
+        }
     }
 }
 

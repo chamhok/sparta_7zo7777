@@ -265,10 +265,9 @@ public class gameManager : MonoBehaviour
                 audioSource.Play();
                 //카드 매칭이 끝나면 배경음악중지, 성공음악 재생
 
-                string resourceToSave = GetResourceNameForImageName(firstCardImage);
-
+               
                 // PlayerPrefs에 GalleryCard 키로 리소스 이름 저장
-                PlayerPrefs.SetString("GalleryCard", resourceToSave);
+                PlayerPrefs.SetString("GalleryCard", firstCardImage);
                 PlayerPrefs.Save();
             }
         }
@@ -286,17 +285,7 @@ public class gameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
     }
-    private string GetResourceNameForImageName(string imageName)
-    {
-        foreach (var image in images)
-        {
-            if (image.GetName() == imageName)
-            {
-                return image.GetResourceName();
-            }
-        }
-        return "오류";
-    }
+    
 
     //고양이의 위치를 바꾼다.
     private void cathide()
