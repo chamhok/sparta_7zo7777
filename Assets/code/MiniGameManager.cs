@@ -9,6 +9,7 @@ public class MiniGameManager : MonoBehaviour
 {
         public GameObject arrow;
         public GameObject run;
+        public GameObject retryBtn;
         public Text healthText;
         public Text timeTxt;
         public float currentTime = 0.0f;
@@ -18,42 +19,45 @@ public class MiniGameManager : MonoBehaviour
         public float health;
         public float maxHealth = 100;
         public Animator anim;
-        bool isCharacterDead = false;
+        public float level = 1f;
+        public float[] nextTime = { 5f, 10f, 15f, 20f, 25f, 30f, 35f, 40f, 60f, 100f, 150f, 210f, 280f, 360f, 450f, 600f };
 
-        // Start is called before the first frame update
+
+        //bool isCharacterDead = false;
+
         private void Awake()
         {
             anim = GetComponent<Animator>();
             Time.timeScale = 1.0f;
                 I = this;
                 health = maxHealth;
-                InvokeRepeating("makeArrow", 0, 0.2f);
+                InvokeRepeating("makeArrow", 0, 0.1f);
 
         }
         void Start()
         {
         }
 
-        // Update is called once per frame
         void Update()
         {
-            if (isCharacterDead) return;
+                // if (isCharacterDead) return;
                 currentTime += Time.deltaTime;
                 timeTxt.text = currentTime.ToString("N2");
-
+                
                 if (health > 0) 
                 { 
-                healthText.text = health.ToString(); 
+                        healthText.text = health.ToString(); 
                 }
                 else
 
                 {
+                        retryBtn.SetActive(true);
                         Time.timeScale = 0.0f;
                         healthText.text = "YOU DIED!!!";
                 }
                 
         }
-	//화살 쏘기
+	//ȭ�� ���
 	void makeArrow()
         {
                 Instantiate(arrow);
