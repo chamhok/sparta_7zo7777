@@ -9,9 +9,8 @@ public class minigame : MonoBehaviour
         public float speed;
         float stendingPos;
         public Animator anim;
-       // WaitForFixedUpdate wait;
+       // WaitForFixedUpdate wait; 작동안됨
 
-        // Start is called before the first frame update
         void Start()
         {
                 stendingPos = Mathf.Abs(transform.position.y);
@@ -21,15 +20,15 @@ public class minigame : MonoBehaviour
                 
         }
 
-        // Update is called once per frame
         void Update()
         {
                 inputVec.x = Input.GetAxis("Horizontal");
                 inputVec.y = Input.GetAxis("Vertical");
         }
+        //미니게임 플레이어를 이동시킨다.
         private void FixedUpdate()
         {
-              //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("hit")) return;
+              //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("hit")) return; 작동안됨 
                 float scale = Mathf.Abs(transform.position.y) / stendingPos;
                 transform.localScale = new Vector3(scale, scale, 1);
                 Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
@@ -39,8 +38,8 @@ public class minigame : MonoBehaviour
         {
                 if (coll.gameObject.tag == "arrow")
                 {
-                        transform.position = new Vector3(transform.position.x - 10f, transform.position.y, 0);
-                       // StartCoroutine(knockBoack()); 작동안됨
+                        transform.position = new Vector3(transform.position.x - 5f, transform.position.y, 0); //화살에 맞으면 뒤로 이동 시킴
+                       // StartCoroutine(knockBoack()); 작동안됨 
                       //  anim.SetTrigger("hit");
                 }
         }

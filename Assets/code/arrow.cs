@@ -14,16 +14,20 @@ public class arrow : MonoBehaviour
                 transform.position = new Vector3(x,-y, 0);
         }
 
-        // Update is called once per frame
-        void Update()
+        private void FixedUpdate()
         {
                 if (transform.position.x < -70)
                 {
                         Destroy(gameObject);
                 }
                 float scale = Mathf.Abs(transform.position.y) / arrowPos;
-                transform.localScale = new Vector3(scale*20, scale*20, 1);
-                transform.position -= new Vector3(0.1f, 0, 0);
+                transform.localScale = new Vector3(scale * 20, scale * 20, 1);
+                transform.position -= new Vector3(1f, 0, 0);
+        }
+        // Update is called once per frame
+        void Update()
+        {
+              
         }
         void OnCollisionEnter2D(Collision2D coll)
         {
