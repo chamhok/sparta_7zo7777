@@ -48,7 +48,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -92,7 +92,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -120,7 +120,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -150,7 +150,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -180,7 +180,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -228,7 +228,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -321,7 +321,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -334,7 +334,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3752091793
+      path: 3473698246
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -343,7 +343,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3752091793
+      path: 3473698246
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -352,7 +352,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3752091793
+      path: 3473698246
       attribute: 304273561
       script: {fileID: 0}
       typeID: 212
@@ -361,7 +361,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3752091793
+      path: 3473698246
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 212
@@ -370,7 +370,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3752091793
+      path: 3473698246
       attribute: 2526845255
       script: {fileID: 0}
       typeID: 212
@@ -379,7 +379,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3752091793
+      path: 3473698246
       attribute: 4215373228
       script: {fileID: 0}
       typeID: 212
@@ -388,7 +388,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3752091793
+      path: 3473698246
       attribute: 2334886179
       script: {fileID: 0}
       typeID: 212
@@ -453,7 +453,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -492,7 +492,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -531,7 +531,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -579,7 +579,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -627,7 +627,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -675,7 +675,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -705,7 +705,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -735,7 +735,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -765,7 +765,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -813,7 +813,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -906,7 +906,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: "\uAE00\uC528\uC774\uBBF8\uC9C0"
+    path: "\uC2A4\uCF00\uC77C\uC870\uC815\uC6A9/\uAE00\uC528\uC774\uBBF8\uC9C0"
     classID: 212
     script: {fileID: 0}
     flags: 0
