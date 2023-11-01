@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class minigame : MonoBehaviour
 {
+
+    
+    public AudioSource audioSource;
+    public AudioClip hitSound;
         public Vector2 inputVec;
         Rigidbody2D rigid;
         public float speed;
@@ -40,6 +44,8 @@ public class minigame : MonoBehaviour
                 {
                         transform.position = new Vector3(transform.position.x - 5f, transform.position.y, 0); //화살에 맞으면 뒤로 이동 시킴
                         MiniGameManager.I.health -= 20;
+            
+                        audioSource.PlayOneShot(hitSound);//bgm 재생
                         Debug.Log(MiniGameManager.I.health);
                        // StartCoroutine(knockBoack()); 작동안됨 
                       //  anim.SetTrigger("hit");
