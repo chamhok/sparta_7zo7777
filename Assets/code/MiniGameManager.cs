@@ -55,7 +55,7 @@ public class MiniGameManager : MonoBehaviour
 
                 {
                         gameOver();
-                        Time.timeScale = 0.0f;
+                        
                         healthText.text = "YOU DIED!!!";
                 }
                 
@@ -66,7 +66,7 @@ public class MiniGameManager : MonoBehaviour
         }
         public void gameOver()
         {
-                Time.timeScale = 0.0f;
+                
                 
                 retryBtn.SetActive(true);
                 

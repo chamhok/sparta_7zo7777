@@ -51,7 +51,7 @@ public class minigame : MonoBehaviour
                         Debug.Log(MiniGameManager.I.health);
                        // StartCoroutine(knockBoack()); 작동안됨 
                       //  anim.SetTrigger("hit");
-                      if(MiniGameManager.I.health == 0) 
+                      if(MiniGameManager.I.health <= 0) 
                       {
                             Dead();
                       }
