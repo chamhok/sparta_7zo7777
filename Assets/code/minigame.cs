@@ -59,16 +59,22 @@ public class minigame : MonoBehaviour
         }
     public void Dead()
     {
+        anim.SetBool("isDie", true);
         audioSource.PlayOneShot(DeadSound);
+        Invoke("timeStop", 0.5f);
     }
-    
+    void timeStop()
+    {
+        Time.timeScale = 0.0f;
+    }
 
-        /* 작동안됨
-        IEnumerator knockBoack()
-        {
-                yield return wait;
-                Vector3 dirVec = transform.position - transform.position;
-                rigid.AddForce(dirVec.normalized*3 , ForceMode2D.Impulse);
-        }
-        */
+
+    /* 작동안됨
+    IEnumerator knockBoack()
+    {
+            yield return wait;
+            Vector3 dirVec = transform.position - transform.position;
+            rigid.AddForce(dirVec.normalized*3 , ForceMode2D.Impulse);
+    }
+    */
 }

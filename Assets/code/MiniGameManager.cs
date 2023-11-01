@@ -18,12 +18,13 @@ public class MiniGameManager : MonoBehaviour
         public float health;
         public float maxHealth = 100;
         public Animator anim;
-    //bool isCharacterDead = false;
+        bool isCharacterDead = false;
 
         // Start is called before the first frame update
         private void Awake()
         {
-                Time.timeScale = 1.0f;
+            anim = GetComponent<Animator>();
+            Time.timeScale = 1.0f;
                 I = this;
                 health = maxHealth;
                 InvokeRepeating("makeArrow", 0, 0.2f);
@@ -36,6 +37,7 @@ public class MiniGameManager : MonoBehaviour
         // Update is called once per frame
         void Update()
         {
+            if (isCharacterDead) return;
                 currentTime += Time.deltaTime;
                 timeTxt.text = currentTime.ToString("N2");
 
@@ -44,13 +46,12 @@ public class MiniGameManager : MonoBehaviour
                 healthText.text = health.ToString(); 
                 }
                 else
-                {
-                        Time.timeScale = 0.0f;
-                        healthText.text = "죽음!!!";
+                {       
+                    healthText.text = "����!!!";
                 }
                 
         }
-	/*IEnumerator CheckCharacterDeath()
+    /*IEnumerator CheckCharacterDeath()
     {
         while (true)
         {
@@ -67,8 +68,8 @@ public class MiniGameManager : MonoBehaviour
         }
     }//죽기, 죽을때 소리나기, 부활하기 
     */
-	//화살을 생성
-	void makeArrow()
+    //화살을 생성
+    void makeArrow()
         {
                 Instantiate(arrow);
         }
