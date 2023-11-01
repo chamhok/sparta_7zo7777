@@ -326,29 +326,45 @@ public class gameManager : MonoBehaviour
     {
 		endPanel.SetActive(true);
 		Time.timeScale = 0.0f;
-        // 몇 초 안에 깼는지 + 점수
-        float clearTime = limitTime - currentTime;
+        // 몇 초 안에 깼는지
+        float clearTime = limitTime - currentTime; // 남은시간
         float timeScore = currentTime;
-		if (PlayerPrefs.HasKey("fastest"))
+        if(success) // 게임 승리!
         {
-            if(PlayerPrefs.GetFloat("fastest") >= clearTime)
-            {
-                PlayerPrefs.GetFloat("fastest", clearTime);
-                fastestTxt.text = clearTime.ToString("N2");
-            }
-            else
+			if (PlayerPrefs.HasKey("fastest"))
+			{
+				if (PlayerPrefs.GetFloat("fastest") <= clearTime)
+				{
+					PlayerPrefs.SetFloat("fastest", clearTime);
+					fastestTxt.text = clearTime.ToString("N2");
+				}
+				else
+				{
+					fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
+				}
+			}
+			else // 키가 없으면
+			{
+				PlayerPrefs.SetFloat("fastest", clearTime);
+				fastestTxt.text = clearTime.ToString("N2");
+			}
+		}
+        else // 게임 패배
+        {
+            if (PlayerPrefs.HasKey("fastest"))
             {
                 fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
             }
-        }
-        else if(success)
-        {
-            PlayerPrefs.GetFloat("fastest", clearTime);
-            fastestTxt.text = clearTime.ToString("N2");
-        }
+            else // 키가 없으면
+            {
+                fastestTxt.text = "0.00";
+            }
+		}
+
         // 이번 판 점수 설정
         float currentScore = 0f;
         if(success) currentScore = 50f + timeScore - (float)tryCount / 2;
+        if(currentScore < 0) currentScore = 0;
 		currentScoreTxt.text = currentScore.ToString("N2");
 
         // 최고점 설정 <- 최단속도랑 똑같은데 key만 다름
@@ -356,7 +372,7 @@ public class gameManager : MonoBehaviour
         {
             if(PlayerPrefs.GetFloat("maxScore") <= currentScore)
             {
-                PlayerPrefs.GetFloat("maxScore", currentScore);
+                PlayerPrefs.SetFloat("maxScore", currentScore);
                 highScoreTxt.text = currentScore.ToString("N2");
             }
             else
@@ -366,7 +382,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.GetFloat("maxScore", currentScore);
+            PlayerPrefs.SetFloat("maxScore", currentScore);
             highScoreTxt.text = currentScore.ToString("N2");
         }
 
