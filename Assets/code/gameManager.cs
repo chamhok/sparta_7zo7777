@@ -61,6 +61,7 @@ public class gameManager : MonoBehaviour
 
     public GameObject card;
     public GameObject cards;
+    public GameObject matchFailTxt;
 
     public static gameManager I;
 
@@ -70,7 +71,8 @@ public class gameManager : MonoBehaviour
     public float limitTime = 5.0f;
     public int difficult = 0;
     float currentTime = 0.0f;
-    int tryCount = 0;
+    float matchFailScore = 1f;
+	int tryCount = 0;
     int matchingCount = 0;
 
     // 현재는 수동으로 배열의 갯수와 setImages 함수를 바꿔야 한다.
@@ -205,6 +207,8 @@ public class gameManager : MonoBehaviour
         {
                 cathide();
                 audioSource.PlayOneShot(wrong);
+                generateFailTxt(matchFailScore);
+                currentTime -= matchFailScore;
                 setMatchTxt("꽝!!!");
                 firstCard.GetComponent<card>().closeCard();
                 secondCard.GetComponent<card>().closeCard();
@@ -438,5 +442,11 @@ public class gameManager : MonoBehaviour
             PlayerPrefs.SetInt(resourceName, 1);
         }
 	}
+
+    void generateFailTxt(float matchFailScore)
+    {
+        GameObject newTxt = Instantiate(matchFailTxt, GameObject.Find("Canvas").transform);
+        newTxt.GetComponent<matchFailTxt>().setMyTxt(matchFailScore);
+    }
 
 }
