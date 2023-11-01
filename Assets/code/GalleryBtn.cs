@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GalleryBtn : MonoBehaviour
 {
-    GalleryManager.WhoIs whoIs;
     public enum Achives
     {
         UnlockFirst,
@@ -34,48 +32,38 @@ public class GalleryBtn : MonoBehaviour
     {
         galleryManager = FindObjectOfType<GalleryManager>();
         lockCard.SetActive(true);
-        btn.interactable = false;
+        btn.interactable = false; 
 
         Init();
-
-        //    if (!PlayerPrefs.HasKey("MyData"))  return;
-
-        Set(achive);
+        Set();
 
     }
-
 
     void Init()
     {
         switch (achive)
         {
             case Achives.UnlockFirst:
-                //myKey = new Sprite[galleryManager.firstKey.Length];
-                myKey = galleryManager.firstKey;
+                myKey = galleryManager.firstKey;  
                 break;
 
             case Achives.UnlockSecond:
-                // myKey = new Sprite[galleryManager.secondKey.Length];
                 myKey = galleryManager.secondKey;
                 break;
 
             case Achives.UnlockThird:
-                //  myKey = new Sprite[galleryManager.thirdKey.Length];
                 myKey = galleryManager.thirdKey;
                 break;
 
             case Achives.UnlockFourth:
-                // myKey = new Sprite[galleryManager.fourthKey.Length];
                 myKey = galleryManager.fourthKey;
                 break;
 
             case Achives.UnlockFifth:
-                // myKey = new Sprite[galleryManager.fifthKey.Length];
                 myKey = galleryManager.fifthKey;
                 break;
 
             case Achives.UnlockSixth:
-                //myKey = new Sprite[galleryManager.sixthKey.Length];
                 myKey = galleryManager.sixthKey;
                 break;
 
@@ -85,19 +73,16 @@ public class GalleryBtn : MonoBehaviour
         }
     }
 
-    void Set(Achives ach)
+    void Set()
     {
         for (int i = 0; i < myKey.Length; i++)
         {
             if (!PlayerPrefs.HasKey(myKey[i].name)) // 플레이어프리프에 하나라도 안본 내사진이있다면 버튼 안열림
-            {
                 return;
-            }
         }
 
         lockCard.SetActive(false);
         btn.interactable = true;
-
     }
 
     public void Click()
