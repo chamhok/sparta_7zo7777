@@ -25,12 +25,14 @@ public class difficultBtn : MonoBehaviour
 
     public void difficultUp()
     {
+        audioSource.PlayOneShot(click);
         difficulty++;
         difficultconfirm();
     }
 
     public void difficultDown()
     {
+        audioSource.PlayOneShot(click);
         difficulty--;
         difficultconfirm();
     }
