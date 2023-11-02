@@ -36,6 +36,8 @@ public class GalleryManager : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1.0f;
+
         profile = new Dictionary<int, ProfileSetting>();
 
         for (int i = 0; i < names.Length; i++)
