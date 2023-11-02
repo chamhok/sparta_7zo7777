@@ -13,6 +13,6 @@ public class Follow : MonoBehaviour
 
         private void FixedUpdate()
         {
-                rect.position = Camera.main.WorldToScreenPoint(new Vector3(MiniGameManager.I.run.transform.position.x,(MiniGameManager.I.run.transform.position.y)+15f, MiniGameManager.I.run.transform.position.z));
+                rect.position = Camera.main.WorldToScreenPoint(new Vector3(MiniGameManager.I.run.transform.position.x+20,(MiniGameManager.I.run.transform.position.y)+15f, MiniGameManager.I.run.transform.position.z));
         }
 }
