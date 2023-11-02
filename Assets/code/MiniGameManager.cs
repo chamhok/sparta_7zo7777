@@ -56,7 +56,7 @@ public class MiniGameManager : MonoBehaviour
                 {
                         gameOver();
                         
-                        healthText.text = "YOU DIED!!!";
+                        healthText.text = "DIE";
                 }
                 
         }
