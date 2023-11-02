@@ -2846,7 +2846,8 @@ MonoBehaviour:
   arrow: {fileID: 5948800999926009793, guid: db7722b21fe66694892657109f049b02, type: 3}
   run: {fileID: 1387550196}
   retryBtn: {fileID: 1790413864}
-  hurryUp: {fileID: 1122731116}
+  hurryUpPos: {fileID: 1122731116}
+  hurryUp: {fileID: 4573339722932020082, guid: 6cb90a3859697f74b88244f02233ccb0, type: 3}
   healthText: {fileID: 955704914}
   timeTxt: {fileID: 180565350}
   scoreTxt: {fileID: 986668293}
@@ -2856,6 +2857,7 @@ MonoBehaviour:
   maxHealth: 100
   anim: {fileID: 0}
   level: 1
+  levelCount: 0
   nextTime:
   - 5
   - 10

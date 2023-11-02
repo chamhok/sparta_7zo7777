@@ -25,6 +25,7 @@ public class GalleryBtn : MonoBehaviour
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         btn = GetComponent<Button>();
         myKey = new Sprite[1];
     }

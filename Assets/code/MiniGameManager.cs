@@ -73,7 +73,9 @@ public class MiniGameManager : MonoBehaviour
         }
         public void generateEffect_HurryUp(Transform trans)
         {
-                Instantiate(hurryUp, trans.position, Quaternion.identity);
+
+        GameObject hurry = Instantiate(hurryUp, trans.position, Quaternion.identity);
+        hurry.transform.localScale = Vector3.one * 12f;
         }
         void makeArrow()
         {
