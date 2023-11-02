@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using UnityEditor.VersionControl;
 
 public class VolumeMixer : MonoBehaviour
 {
