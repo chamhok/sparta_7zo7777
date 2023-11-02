@@ -17,7 +17,7 @@ public class arrow : MonoBehaviour
                 arrowPos = Mathf.Abs(transform.position.y);
                 arrowScale_x = transform.localScale.x;
                 arrowScale_y = transform.localScale.y;
-                float x = 70f;
+                float x = 80f;
                 float y = Random.Range(60f, 110f);
                 transform.position = new Vector3(x,-y, 0);
         }
