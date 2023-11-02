@@ -347,6 +347,10 @@ public class gameManager : MonoBehaviour
     {
         endPanel.SetActive(true);
         Time.timeScale = 0.0f;
+        if(success == false)
+        {
+            timeTxt.text = "0.00";
+		}
         // 몇 초 안에 깼는지
         float clearTime = currentTime; // 남은시간
         float timeScore = currentTime;
