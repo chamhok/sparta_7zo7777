@@ -9,6 +9,7 @@ public class arrow : MonoBehaviour
         float arrowScale_y;
         float level;
         int levelCount = 0;
+        GameObject hurryup;
 
         void Start()
         {
@@ -43,8 +44,7 @@ public class arrow : MonoBehaviour
                         level += (float)levelCount;
                         transform.position -= new Vector3(level, 0, 0);
                         levelCount++;
-                        Debug.Log(level);
-
+                        
                 }
                 else transform.position -= new Vector3(level, 0, 0);
 

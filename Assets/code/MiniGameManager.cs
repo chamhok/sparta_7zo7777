@@ -10,6 +10,8 @@ public class MiniGameManager : MonoBehaviour
         public GameObject arrow;
         public GameObject run;
         public GameObject retryBtn;
+        public GameObject hurryUpPos;
+        public GameObject hurryUp;
         public Text healthText;
         public Text timeTxt;
         public Text scoreTxt;
@@ -22,6 +24,7 @@ public class MiniGameManager : MonoBehaviour
         public float maxHealth = 100;
         public Animator anim;
         public float level = 1f;
+        public int levelCount = 0;
         public float[] nextTime = { 5f, 10f, 15f, 20f, 25f, 30f, 35f, 40f, 60f, 100f, 150f, 210f, 280f, 360f, 450f, 600f };
 
 
@@ -37,17 +40,18 @@ public class MiniGameManager : MonoBehaviour
                 InvokeRepeating("makeArrow", 0, 0.1f);
 
         }
-        void Start()
-        {
-        }
+       
 
         void Update()
         {
                 // if (isCharacterDead) return;
                 currentTime += Time.deltaTime;
                 timeTxt.text = currentTime.ToString("N2");
-                
-                if (health > 0) 
+                if (currentTime > nextTime[levelCount])
+                {
+                        levelUp();
+                }
+                        if (health > 0) 
                 { 
                         healthText.text = health.ToString(); 
                 }
@@ -59,11 +63,23 @@ public class MiniGameManager : MonoBehaviour
                         healthText.text = "DIE";
                 }
                 
+                
         }
-	    void makeArrow()
+        public void levelUp()
+        {
+                levelCount++;
+                Debug.Log(levelCount);
+                generateEffect_HurryUp(hurryUpPos.transform);
+        }
+        public void generateEffect_HurryUp(Transform trans)
+        {
+                Instantiate(hurryUp, trans.position, Quaternion.identity);
+        }
+        void makeArrow()
         {
                 Instantiate(arrow);
         }
+     
         public void gameOver()
         {
                 

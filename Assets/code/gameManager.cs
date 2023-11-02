@@ -477,7 +477,7 @@ public class gameManager : MonoBehaviour
         Instantiate(effect_NewCard, trans.position, Quaternion.identity);
     }
 
-    void generateEffect_HurryUp(Transform trans)
+    public void generateEffect_HurryUp(Transform trans)
     {
         Instantiate(effect_HurryUp, trans.position, Quaternion.identity);
     }
