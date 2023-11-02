@@ -10,7 +10,6 @@ public class VolumeMixer : MonoBehaviour
 {
     public AudioMixer masterMixer;
     public Slider audioSlider;
-    public bool isClicked;
     public Image Speaker;
     public Sprite SpeakerOff;
     public Sprite SpeakerOn;
@@ -26,8 +25,8 @@ public class VolumeMixer : MonoBehaviour
     public void ToggleAudioVolume()
     {
         AudioListener.volume = AudioListener.volume == 0 ? 1 : 0;
-        isClicked = !isClicked;
-        if (isClicked == true)
+        
+        if (AudioListener.volume == 0)
         {
             Speaker.sprite = SpeakerOff;
         }
