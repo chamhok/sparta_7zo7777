@@ -16,20 +16,13 @@ public class VolumeMixer : MonoBehaviour
     float sound;
     public void AudioControl()
     {
-        Debug.Log(audioSlider.value);
-        sound = PlayerPrefs.GetFloat("Volume", audioSlider.value);
-        if (PlayerPrefs.HasKey("Volume") == false)
-        {
-            PlayerPrefs.SetFloat("Volume", audioSlider.value);
-        }
-        else
-        {
-            if (sound == -40f) masterMixer.SetFloat("BGM", -80);
-            else masterMixer.SetFloat("BGM", PlayerPrefs.GetFloat("Volume", audioSlider.value)) ;
-        }
+        // 슬라이더 값 저장
+        float currentVolume = audioSlider.value;
+        PlayerPrefs.SetFloat("Volume", currentVolume);
+        PlayerPrefs.Save();
 
-
-        
+        // 볼륨 설정
+        SetVolume(currentVolume);
     }
 
     public void ToggleAudioVolume()
@@ -52,7 +45,30 @@ public class VolumeMixer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            float savedVolume = PlayerPrefs.GetFloat("Volume");
+            audioSlider.value = savedVolume;
+            SetVolume(savedVolume);
+        }
+
+        // 스피커 설정 불러오기
+        if (PlayerPrefs.HasKey("Speaker"))
+        {
+            int isSpeakerOn = PlayerPrefs.GetInt("Speaker");
+            Speaker.sprite = (isSpeakerOn == 1) ? SpeakerOn : SpeakerOff;
+        }
+    }
+    private void SetVolume(float volume)
+    {
+        if (volume == -40f)
+        {
+            masterMixer.SetFloat("BGM", -80);
+        }
+        else
+        {
+            masterMixer.SetFloat("BGM", volume);
+        }
     }
 
     // Update is called once per frame
