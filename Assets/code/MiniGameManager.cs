@@ -12,8 +12,10 @@ public class MiniGameManager : MonoBehaviour
         public GameObject retryBtn;
         public GameObject hurryUpPos;
         public GameObject hurryUp;
+        public GameObject Hart;
         public Text healthText;
         public Text timeTxt;
+        public Text youDieTxt;
         public Text scoreTxt;
         public float currentTime = 0.0f;
         
@@ -51,16 +53,19 @@ public class MiniGameManager : MonoBehaviour
                 {
                         levelUp();
                 }
-                        if (health > 0) 
-                { 
+
+                if (health > 0) 
+                {
+                        youDieTxt.text = "";
                         healthText.text = health.ToString(); 
                 }
                 else
-
                 {
                         gameOver();
+                        healthText.text = "";
+                        youDieTxt.text = "YOU DIE!";
+                        Hart.SetActive(false);
                         
-                        healthText.text = "DIE";
                 }
                 
                 
