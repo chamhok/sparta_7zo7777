@@ -23,6 +23,10 @@ public class GalleryBtn : MonoBehaviour
 
     Button btn; // 버튼 컴포넌트
 
+
+    public AudioClip flip;
+    public AudioClip nya;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -42,10 +46,13 @@ public class GalleryBtn : MonoBehaviour
 
     void Init()
     {
+        audioSource.clip = flip;
+
         switch (achive)
         {
             case Achives.UnlockFirst:
-                myKey = galleryManager.firstKey;  
+                myKey = galleryManager.firstKey;
+
                 break;
 
             case Achives.UnlockSecond:
@@ -66,6 +73,8 @@ public class GalleryBtn : MonoBehaviour
 
             case Achives.UnlockSixth:
                 myKey = galleryManager.sixthKey;
+                audioSource.clip = nya;
+
                 break;
 
             default:
@@ -89,7 +98,7 @@ public class GalleryBtn : MonoBehaviour
     public void Click()
     {
         if (audioSource != null)
-            audioSource.Play();
+        audioSource.Play();
 
         galleryManager.PopupOpen((int)achive);
     }

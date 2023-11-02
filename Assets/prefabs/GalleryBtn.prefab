@@ -246,6 +246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achive: 0
   lockCard: {fileID: 2366083135392441123}
+  flip: {fileID: 8300000, guid: 2d7683bea61c9a046ae49e77a1627ed2, type: 3}
+  nya: {fileID: 8300000, guid: cf9e679e1df21794195b705aece1025b, type: 3}
 --- !u!1 &2366083135392441123
 GameObject:
   m_ObjectHideFlags: 0
