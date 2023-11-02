@@ -19,11 +19,16 @@ public class GalleryManager : MonoBehaviour
 
     readonly string[] names = { "전은하", "황선범", "강건욱", "정용태", "박기혁", "냥이" };
     public Sprite[] faces; // 이름 순서대로 프사를 넣어주세요.
+
+    [TextArea]
+    public string[] part;
+
     [TextArea]
     public string[] tmis; // 이름 순서대로 설명을 적어주세요.
-
+   
     public Text nameTxt;
     public Image faceImg;
+    public Text partTxt;
     public Text tmiTxt;
 
     public GalleryPopup galleryPopup;
@@ -35,7 +40,7 @@ public class GalleryManager : MonoBehaviour
 
         for (int i = 0; i < names.Length; i++)
         {
-            profile.Add(i, new ProfileSetting(names[i], faces[i], tmis[i]));
+            profile.Add(i, new ProfileSetting(names[i], faces[i], part[i], tmis[i]));
         }
     }
 
@@ -43,6 +48,7 @@ public class GalleryManager : MonoBehaviour
     {
         nameTxt.text = profile[num].name;
         tmiTxt.text = profile[num].instruction;
+        partTxt.text = profile[num].part;
         faceImg.sprite = faces[num];
 
         if (num == 5) // 냥이는 ssr배경

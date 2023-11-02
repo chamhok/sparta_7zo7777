@@ -5,10 +5,11 @@ public class ProfileSetting
     public string name;
     public Sprite face;
     public string instruction;
-
-    public ProfileSetting(string myName, Sprite myFace, string myInst) // 이름, 프사, tmi
+    public string part;
+    public ProfileSetting(string myName, Sprite myFace, string myPart, string myInst) // 이름, 프사, 직함, tmi
     {
         name = myName;
+        part = myPart;
         instruction = myInst;
         face = myFace;
     }
