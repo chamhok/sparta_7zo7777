@@ -19,6 +19,7 @@ public class GalleryManager : MonoBehaviour
 
     readonly string[] names = { "전은하", "황선범", "강건욱", "정용태", "박기혁", "냥이" };
     public Sprite[] faces; // 이름 순서대로 프사를 넣어주세요.
+    [TextArea]
     public string[] tmis; // 이름 순서대로 설명을 적어주세요.
 
     public Text nameTxt;

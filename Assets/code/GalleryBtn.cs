@@ -12,7 +12,7 @@ public class GalleryBtn : MonoBehaviour
         UnlockFifth,
         UnlockSixth
     }
-    public Achives achive; //업적이름 인스펙터에서 선택해주세요
+    public Achives achive; //업적이름 : 인스펙터에서 선택해주세요
 
     Sprite[] myKey;
 
