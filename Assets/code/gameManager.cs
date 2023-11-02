@@ -78,8 +78,8 @@ public class gameManager : MonoBehaviour
     public GameObject firstCard;
     public GameObject secondCard;
 
-    public float limitTime = 5.0f;
     public int difficult = 0;
+    float limitTime = 0.0f;
     float currentTime = 0.0f;
     float matchFailScore = 1f;
     int tryCount = 0;
@@ -112,6 +112,7 @@ public class gameManager : MonoBehaviour
     {
         clearMatchTxt();
         difficult = GameObject.Find("difficultysend").GetComponent<difficultysend>().difficult;
+        limitTime = 30.0f + (difficult * 5);
         currentTime = limitTime;
         isEnd = false;
         isHurry = false;
@@ -347,33 +348,33 @@ public class gameManager : MonoBehaviour
         endPanel.SetActive(true);
         Time.timeScale = 0.0f;
         // 몇 초 안에 깼는지
-        float clearTime = limitTime - currentTime; // 남은시간
+        float clearTime = currentTime; // 남은시간
         float timeScore = currentTime;
         if (success) // 게임 승리!
         {
-            if (PlayerPrefs.HasKey("fastest"))
+            if (PlayerPrefs.HasKey("fastest" + difficult.ToString()))
             {
-                if (PlayerPrefs.GetFloat("fastest") <= clearTime)
+                if (PlayerPrefs.GetFloat("fastest" + difficult.ToString()) <= clearTime)
                 {
-                    PlayerPrefs.SetFloat("fastest", clearTime);
+                    PlayerPrefs.SetFloat("fastest" + difficult.ToString(), clearTime);
                     fastestTxt.text = clearTime.ToString("N2");
                 }
                 else
                 {
-                    fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
+                    fastestTxt.text = PlayerPrefs.GetFloat("fastest" + difficult.ToString()).ToString("N2");
                 }
             }
             else // 키가 없으면
             {
-                PlayerPrefs.SetFloat("fastest", clearTime);
+                PlayerPrefs.SetFloat("fastest" + difficult.ToString(), clearTime);
                 fastestTxt.text = clearTime.ToString("N2");
             }
         }
         else // 게임 패배
         {
-            if (PlayerPrefs.HasKey("fastest"))
+            if (PlayerPrefs.HasKey("fastest" + difficult.ToString()))
             {
-                fastestTxt.text = PlayerPrefs.GetFloat("fastest").ToString("N2");
+                fastestTxt.text = PlayerPrefs.GetFloat("fastest" + difficult.ToString()).ToString("N2");
             }
             else // 키가 없으면
             {
