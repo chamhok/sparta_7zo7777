@@ -1868,6 +1868,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterMixer: {fileID: 24100000, guid: 923fd77af9f9a974c9a2856668c34b14, type: 2}
   audioSlider: {fileID: 2051011608}
+  isClicked: 0
+  Speaker: {fileID: 1228279069}
+  SpeakerOff: {fileID: 21300000, guid: b68051272caa6b24394c754715edea3b, type: 3}
+  SpeakerOn: {fileID: 21300000, guid: e8d0acbc1b114e04fa57f5d94d8e2eab, type: 3}
 --- !u!114 &1228279068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1899,7 +1903,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: b68051272caa6b24394c754715edea3b, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4431,6 +4435,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterMixer: {fileID: 24100000, guid: 923fd77af9f9a974c9a2856668c34b14, type: 2}
   audioSlider: {fileID: 2051011608}
+  isClicked: 0
+  Speaker: {fileID: 0}
+  SpeakerOff: {fileID: 0}
+  SpeakerOn: {fileID: 0}
 --- !u!114 &2051011608
 MonoBehaviour:
   m_ObjectHideFlags: 0
