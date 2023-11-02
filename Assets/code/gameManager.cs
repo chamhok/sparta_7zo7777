@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine.SocialPlatforms.Impl;
 using System.Threading;
+using UnityEngine.UIElements;
 
 class MyImage
 {
@@ -164,7 +165,7 @@ public class gameManager : MonoBehaviour
         {
             isHurry = true;
             timeTxtAnim.SetTrigger("isHurryUp");
-            generateEffect_HurryUp(); //빨리하라는 이펙트 띄움
+            generateEffect_HurryUp(pos_HurryUp.transform); //빨리하라는 이펙트 띄움
         }
     }
 
@@ -454,7 +455,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
-            generateEffect_NewCard(); // 새 카드 얻었다는 이펙트뜸
+            generateEffect_NewCard(pos_NewCard.transform); // 새 카드 얻었다는 이펙트뜸
             PlayerPrefs.SetInt(resourceName, 1);
         }
     }
@@ -471,14 +472,14 @@ public class gameManager : MonoBehaviour
         newTxt.GetComponent<comboTxt>().setColor(comboCount);
     }
 
-    void generateEffect_NewCard()
+    void generateEffect_NewCard(Transform trans)
     {
-        Instantiate(effect_NewCard, pos_NewCard.position, Quaternion.identity);
+        Instantiate(effect_NewCard, trans.position, Quaternion.identity);
     }
 
-    void generateEffect_HurryUp()
+    void generateEffect_HurryUp(Transform trans)
     {
-        Instantiate(effect_HurryUp, pos_HurryUp.position, Quaternion.identity);
+        Instantiate(effect_HurryUp, trans.position, Quaternion.identity);
     }
 
 
