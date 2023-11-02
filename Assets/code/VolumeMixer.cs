@@ -13,13 +13,23 @@ public class VolumeMixer : MonoBehaviour
     public Image Speaker;
     public Sprite SpeakerOff;
     public Sprite SpeakerOn;
-
+    float sound;
     public void AudioControl()
     {
-        float sound = audioSlider.value;
+        Debug.Log(audioSlider.value);
+        sound = PlayerPrefs.GetFloat("Volume", audioSlider.value);
+        if (PlayerPrefs.HasKey("Volume") == false)
+        {
+            PlayerPrefs.SetFloat("Volume", audioSlider.value);
+        }
+        else
+        {
+            if (sound == -40f) masterMixer.SetFloat("BGM", -80);
+            else masterMixer.SetFloat("BGM", PlayerPrefs.GetFloat("Volume", audioSlider.value)) ;
+        }
 
-        if (sound == -40f) masterMixer.SetFloat("BGM", -80);
-        else masterMixer.SetFloat("BGM", sound);
+
+        
     }
 
     public void ToggleAudioVolume()
@@ -29,12 +39,16 @@ public class VolumeMixer : MonoBehaviour
         if (AudioListener.volume == 0)
         {
             Speaker.sprite = SpeakerOff;
+            PlayerPrefs.SetInt("Speaker", 0);
         }
         else
         {
             Speaker.sprite = SpeakerOn;
+            PlayerPrefs.SetInt("Speaker", 1);
         }
+        PlayerPrefs.Save();
     }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +58,6 @@ public class VolumeMixer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PlayerPrefs.GetFloat("Volume", audioSlider.value);
     }
 }
