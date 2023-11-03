@@ -67,6 +67,7 @@ public class gameManager : MonoBehaviour
     public Text matchingTxt;
 
     public GameObject endPanel;
+    public GameObject giveUpPanel;
 
     public GameObject card;
     public GameObject cards;
@@ -77,6 +78,7 @@ public class gameManager : MonoBehaviour
 
     public GameObject firstCard;
     public GameObject secondCard;
+
 
     public int difficult = 0;
     float limitTime = 0.0f;
@@ -154,6 +156,7 @@ public class gameManager : MonoBehaviour
         //제한시간이 지나면 게임 종료
         if (currentTime <= 0)
         {
+            matchTxt.text = "";
             isEnd = true;
             gameEnd(false);
             audioSource.clip = bgmusic;
