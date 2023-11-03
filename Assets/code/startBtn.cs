@@ -13,7 +13,9 @@ public class startBtn : MonoBehaviour
     public void GameStart()
     {
         audioSource.PlayOneShot(click);
-                Invoke("goMainScene", 0.2f);
+                Time.timeScale = 1.0f;
+
+                Invoke("goMainScene", 0.1f);
 
         }
         void goMainScene()

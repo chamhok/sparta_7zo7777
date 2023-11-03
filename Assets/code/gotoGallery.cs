@@ -10,9 +10,12 @@ public class gotoGallery : MonoBehaviour
 
     public void GoGallery()
     {
-        audioSource.PlayOneShot(click);
+                Time.timeScale = 1.0f;
+                audioSource.PlayOneShot(click);
+               
+
                 //클릭 사운드
-                Invoke("goGallery", 0.2f);
+                Invoke("goGallery", 0.1f);
                 //갤러리로 이동
 
         }

@@ -15,7 +15,9 @@ public class minigame : MonoBehaviour
         public float speed;
         float stendingPos;
         public Animator anim;
-       // WaitForFixedUpdate wait; 작동안됨
+        public AudioClip match;
+
+        // WaitForFixedUpdate wait; 작동안됨
 
         void Start()
         {
@@ -34,7 +36,7 @@ public class minigame : MonoBehaviour
         //미니게임 플레이어를 이동시킨다.
         private void FixedUpdate()
         {
-              //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("hit")) return; 작동안됨 
+                //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("hit")) return; 작동안됨 
                 float scale = Mathf.Abs(transform.position.y) / stendingPos;
                 transform.localScale = new Vector3(scale, scale, 1);
                 Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
@@ -57,8 +59,22 @@ public class minigame : MonoBehaviour
                             Dead();
                       }
                 }
+                if (coll.gameObject.tag == "Drink")
+                {
+                        audioSource.PlayOneShot(match);
+                        DrinkingTextOn();
+                        Invoke("DrinkingTextOff", 0.5f);
+                }
         }
-    public void Dead()
+        void DrinkingTextOn()
+        {
+                MiniGameManager.I.DrinkingText.text = "+10!";
+        }
+        void DrinkingTextOff()
+        {
+                MiniGameManager.I.DrinkingText.text = "";
+        }
+        public void Dead()
     {
         anim.SetBool("isDie", true);
         audioSource.PlayOneShot(DeadSound);

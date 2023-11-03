@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shadow
+      name: Drink
       rect:
         serializedVersion: 2
-        x: 37
-        y: 25
+        x: 46
+        y: 0
         width: 10
-        height: 6
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      shadow: 271935067
+      Drink: 271935067
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

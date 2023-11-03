@@ -12,10 +12,11 @@ public class GoHome : MonoBehaviour
 
     public void goHome()
     {
-        audioSource.PlayOneShot(click);
-        Destroy(GameObject.Find("difficultysend"));
-                Invoke("gotoStartScene", 0.2f);
                 Time.timeScale = 1.0f;
+                audioSource.PlayOneShot(click);
+        Destroy(GameObject.Find("difficultysend"));
+                Invoke("gotoStartScene", 0.1f);
+                
      }
         void gotoStartScene()
         {

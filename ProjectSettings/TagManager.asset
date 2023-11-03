@@ -6,6 +6,7 @@ TagManager:
   tags:
   - minirun
   - arrow
+  - Drink
   layers:
   - Default
   - TransparentFX

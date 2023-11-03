@@ -11,9 +11,10 @@ public class retryBtn : MonoBehaviour
 
     public void ReGame()
     {
-        audioSource.PlayOneShot(click);
-        Time.timeScale = 1.0f;
-        Invoke("goMainScene", 0.2f);
+                Time.timeScale = 1.0f;
+                audioSource.PlayOneShot(click);
+        
+        Invoke("goMainScene", 0.1f);
                 
     }
         void goMainScene()

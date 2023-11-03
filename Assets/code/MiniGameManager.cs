@@ -13,10 +13,13 @@ public class MiniGameManager : MonoBehaviour
         public GameObject hurryUpPos;
         public GameObject hurryUp;
         public GameObject Hart;
+        public GameObject drink;
+
         public Text healthText;
         public Text timeTxt;
         public Text youDieTxt;
         public Text scoreTxt;
+        public Text DrinkingText;
         public float currentTime = 0.0f;
         
 
@@ -40,6 +43,7 @@ public class MiniGameManager : MonoBehaviour
                 I = this;
                 health = maxHealth;
                 InvokeRepeating("makeArrow", 0, 0.1f);
+                InvokeRepeating("makeDrink", 0, 3f);
 
         }
        
@@ -86,7 +90,11 @@ public class MiniGameManager : MonoBehaviour
         {
                 Instantiate(arrow);
         }
-     
+        void makeDrink()
+        {
+                Instantiate(drink);
+        }
+
         public void gameOver()
         {
                 

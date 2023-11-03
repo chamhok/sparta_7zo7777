@@ -9,8 +9,9 @@ public class MissBtu : MonoBehaviour
     
         public void Miss()
         {
+                Time.timeScale = 1.0f;
                 audioSource.PlayOneShot(click);
-                Invoke("Reload", 0.2f);
+                Invoke("Reload", 0.1f);
         }
         public void Reload()
         {

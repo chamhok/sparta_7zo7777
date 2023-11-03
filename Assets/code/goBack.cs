@@ -10,11 +10,12 @@ public class goBack : MonoBehaviour
 
     public void goStartScene()
     {
-        audioSource.PlayOneShot(click);//클릭 사운드
+                Time.timeScale = 1.0f;
+
+                audioSource.PlayOneShot(click);//클릭 사운드
 
                 
-                Invoke("gotoStartScene", 0.2f);
-                Time.timeScale = 1.0f;
+                Invoke("gotoStartScene", 0.1f);
         }
         //시작화면으로 이동
         void gotoStartScene()
