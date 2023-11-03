@@ -13,18 +13,12 @@ public class startBtn : MonoBehaviour
     public void GameStart()
     {
         audioSource.PlayOneShot(click);
-        SceneManager.LoadScene("MainScene");
-    }
+                Invoke("goMainScene", 0.2f);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+        }
+        void goMainScene()
+        {
+                SceneManager.LoadScene("MainScene");
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -14,18 +14,11 @@ public class GoHome : MonoBehaviour
     {
         audioSource.PlayOneShot(click);
         Destroy(GameObject.Find("difficultysend"));
-        SceneManager.LoadScene("StartScene");
-        Time.timeScale = 1.0f;
+                Invoke("gotoStartScene", 0.2f);
+                Time.timeScale = 1.0f;
      }
-        // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        void gotoStartScene()
+        {
+                SceneManager.LoadScene("StartScene");
+        }
 }

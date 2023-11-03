@@ -10,21 +10,16 @@ public class goBack : MonoBehaviour
 
     public void goStartScene()
     {
-        audioSource.PlayOneShot(click);
-		//클릭 사운드
-		SceneManager.LoadScene("StartScene");
-		//시작화면으로 이동
+        audioSource.PlayOneShot(click);//클릭 사운드
 
-	}
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
+                
+                Invoke("gotoStartScene", 0.2f);
+                Time.timeScale = 1.0f;
+        }
+        //시작화면으로 이동
+        void gotoStartScene()
+        {
+                SceneManager.LoadScene("StartScene");
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

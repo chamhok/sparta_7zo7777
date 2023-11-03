@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class MissBtu : MonoBehaviour
@@ -11,7 +10,7 @@ public class MissBtu : MonoBehaviour
         public void Miss()
         {
                 audioSource.PlayOneShot(click);
-        Invoke("Reload", 0.2f);
+                Invoke("Reload", 0.2f);
         }
         public void Reload()
         {

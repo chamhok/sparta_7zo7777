@@ -11,19 +11,13 @@ public class gotoGallery : MonoBehaviour
     public void GoGallery()
     {
         audioSource.PlayOneShot(click);
-		//클릭 사운드
-		SceneManager.LoadScene("Gallery");
-		//갤러리로 이동
+                //클릭 사운드
+                Invoke("goGallery", 0.2f);
+                //갤러리로 이동
 
-	}
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        }
+        void goGallery()
+        {
+                SceneManager.LoadScene("Gallery");
+        }
 }
