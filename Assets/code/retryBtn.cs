@@ -12,13 +12,8 @@ public class retryBtn : MonoBehaviour
     public void ReGame()
     {
         audioSource.PlayOneShot(click);
-        Invoke("Reload", 0.5f);
-        
-    }
-    public void ReLoad()
-    {
         SceneManager.LoadScene("MainScene");
     }
 
-
+   
 }
