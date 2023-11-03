@@ -947,6 +947,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cd24def2cd79bda48a19205c0fc05fd1, type: 3}
   - {fileID: 21300000, guid: 9ea832c0052d0eb43a51a40e62eb8c45, type: 3}
   - {fileID: 21300000, guid: dccb559c5b5b6304883d3ab6e2cc297f, type: 3}
+  - {fileID: 21300000, guid: 7a50a28b7f24f1b4783b10a20277eda2, type: 3}
   faces:
   - {fileID: 21300000, guid: fafe9eb4e9a2dad42827a74e57dc2786, type: 3}
   - {fileID: 21300000, guid: 578c4404856c96c419f6c7768b213530, type: 3}
