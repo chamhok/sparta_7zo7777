@@ -9,8 +9,11 @@
 23.10.30 ~ 23.11.03
 
 ## 개발 환경
-Unity ver. 2022.3.11f1
-Window 10
+- Unity ver. 2022.3.11f1
+- Window 10
+
+## 플레이 영상
+[유튜브 링크](https://youtu.be/4NTveP4-cDI)
 
 ## 구현 기능
 - 인게임 
